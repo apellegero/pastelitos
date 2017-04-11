@@ -10,7 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware'=>['web']], function(){
+	Route::get('/', function () {
+	    return view('welcome');
+	});
 
-Route::get('/', function () {
-    return view('welcome');
+	Route::post('/singup', [
+		'uses' => 'UserController@singUp',
+		'as' => 'singup'
+	]);
+
+	Route::post('/singin', [
+		'uses' => 'UserController@singIn',
+		'as' => 'singin'
+	]);
 });

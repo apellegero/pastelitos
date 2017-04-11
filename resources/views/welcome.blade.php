@@ -1,95 +1,75 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel</title>
+@section('title')
+    Inicio pastelitos
+@endsection
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+@section('content')
+@if(count($errors) > 0)
+    <div class"row">
+        <div class='col-md-4 col-md-offset-4'>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
         </div>
-    </body>
-</html>
+    </div>
+@endif
+    <div class='row'>
+        <div class='col-md-6'>
+            <form action='{{ route('singup') }}' method='post'>
+                <h3>Sing up</h3>
+                <!--General-->
+                <h4>Datos usuario</h4>
+                <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
+                    <label for='email'>Email</label>
+                    <input class='form-control' type='text' name='email' id='email' value='{{ Request::old('email') }}'>
+                </div>
+                <div class='form-group {{ $errors->has('nusuario') ? 'has-error' : ''}}'>
+                    <label for='nusuario'>Nombre Usuario</label>
+                    <input class='form-control' type='text' name='nusuario' id='nusuario' value='{{ Request::old('nusuario') }}'>
+                </div>
+                <div class='form-group {{ $errors->has('password') ? 'has-error' : ''}}'>
+                    <label for='email'>Contraseña</label>
+                    <input class='form-control' type='password' name='password' id='password' value='{{ Request::old('password') }}'>
+                </div>
+                <h4>Datos personales</h4>
+                <div class='form-group'>
+                    <label for='telefono'>Telefono</label>
+                    <input class='form-control' type='text' name='telefono' id='telefono' value='{{ Request::old('telefono') }}'>
+                </div>
+                 <div class='form-group'>
+                    <label for='nombre'>Nombre</label>
+                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre') }}'>
+                </div>
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <!--Cliente-->
+                <input type='hidden' name='tipo' id='tipo' value='1'>
+                <div class='form-group'>
+                    <label for='apellido'>Apellido</label>
+                    <input class='form-control' type='text' name='apellido' id='apellido' value='{{ Request::old('apellido') }}'>
+                </div>
+                <div class='form-group'>
+                    <label for='fecha_nacimiento'>Fecha Nacimiento</label>
+                    <input class='form-control' type='date' name='fecha_nacimiento' id='fecha_nacimiento' value='{{ Request::old('fecha_nacimiento') }}'>
+                </div>
+                <button type='submit' class='btn btn-primary'>Registrarse</button>
+            </form>
+        </div>
+        <div class='col-md-6'>
+            <form action='{{ route('singin') }}' method='post'>
+                <h3>Sign in</h3>
+                <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
+                    <label for='email'>Email</label>
+                    <input class='form-control' type='text' name='email' id='email' value='{{ Request::old('email') }}'>
+                </div>
+                <div class='form-group {{ $errors->has('password') ? 'has-error' : ''}}'>
+                    <label for='email'>Contraseña</label>
+                    <input class='form-control' type='password' name='password' id='password'>
+                </div>
+                <button type='submit' class='btn btn-primary'>Entrar</button>
+            </form>
+        </div>
+    </div>
+@endsection

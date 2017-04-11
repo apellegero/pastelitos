@@ -1,0 +1,30 @@
+*****************APUNTS******************
+
+Crear una vista:
+
+1- View
+
+Crear un nou arxiu amb el nom de la view a resources\views amb el blade. Per exemple "gestorrepartidor.blade.php".
+
+Us heu d'inspirar en el welcome.blade.php, és l'exemple on tindreu els recursos que necessitareu. El més important és que comenceu per:
+
+@extends('layouts.master')
+
+@section('title')
+    gestor repartidors
+@endsection
+
+@section('content')
+-------------------------------------
+
+2- Controller
+
+Crear un nou controller per a la vista a app\Http\Controllers amb el nom de la pàgina més controller.
+
+Agafarem com a referència UserController, ja que gestiona la resposta d'un formulari, la desa en base de dades i fa verificació dels camps i de sessió.
+
+-------------------------------------
+
+3- Route
+
+Ara toca crear la ruta. A routes\web.php tenim les rutes. Només haurem d'afegir la nostra igual que en el cas del singup.

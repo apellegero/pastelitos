@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Cliente;
+use App\Tienda;
+use \Input as Input;
 
 class UserController extends Controller
 {
@@ -33,7 +35,6 @@ class UserController extends Controller
 		$user->telefono = $telefono;
 		$user->nombre = $nombre;
 		$user->tipo_id = $tipo;
-
 		$user->save();
 
 		//Com User pot ser Client, Repartidor, o Botiga necessitem crear els altres objectes també
@@ -42,19 +43,20 @@ class UserController extends Controller
 			$cliente->id_user = $user->id;
 			$cliente->apellido = $req['apellido'];
 			$cliente->fecha_nacimiento = $req['fecha_nacimiento'];
-
 			$cliente->save();
 		}
 		if($tipo==2){
 		//Tienda
+			$tienda = new Tienda();
+			$tienda->id_user = $user->id;
+			$tienda->nie = $req['nie'];
+			$tienda->save();
 		}
 		if($tipo==3){
 		//Repartidor
 		}
-
 		Auth::login($user);
-
-		return redirect()->back();
+		getPagPrincipal();
 	}
 
 	public function singIn(Request $req){
@@ -67,7 +69,20 @@ class UserController extends Controller
 		if(Auth::attempt(['email' => $req['email'],'password' => $req['password']])){
 			return redirect()->back();
 		}
-		redirect()->back();
+		getPagPrincipal();
 	}
 
+	public function getPagSingUp(){
+		return view('singup');
+	}
+	public function getPagSingUpTienda(){
+		return view('singuptienda');
+	}
+	public function getPagPrincipal(){
+		//por tipo de usuario
+		return view('welcome');
+	}
+	public function getPagindex(){
+		return view('index');
+	}
 }

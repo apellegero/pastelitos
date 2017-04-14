@@ -15,8 +15,8 @@ class TiendaMigration extends Migration
     {
         Schema::create('tienda', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_user');
             $table->string('nie');
-            $table->string('foto');
             $table->timestamps();
         });
     }

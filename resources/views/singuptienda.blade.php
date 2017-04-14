@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Inicio pastelitos
+    Sing up tienda
 @endsection
 
 @section('content')
@@ -19,9 +19,8 @@
     </div>
 @endif
     <div class='row'>
-        <div class='col-md-6'>
+        <div class='col-md-6 col-md-offset-3'>
             <form action='{{ route('singup') }}' method='post'>
-                <h3>Sing up</h3>
                 <!--General-->
                 <h4>Datos usuario</h4>
                 <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
@@ -36,42 +35,25 @@
                     <label for='email'>Contraseña</label>
                     <input class='form-control' type='password' name='password' id='password' value='{{ Request::old('password') }}'>
                 </div>
-                <h4>Datos personales</h4>
+                <h4>Datos tienda</h4>
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <!--tienda-->
+                <div class='form-group'>
+                    <label for='nombre'>Nombre</label>
+                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre') }}'>
+                </div>
                 <div class='form-group'>
                     <label for='telefono'>Telefono</label>
                     <input class='form-control' type='text' name='telefono' id='telefono' value='{{ Request::old('telefono') }}'>
                 </div>
-                 <div class='form-group'>
-                    <label for='nombre'>Nombre</label>
-                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre') }}'>
-                </div>
-                <input type='hidden' name='_token' value='{{ Session::token() }}'>
-                <!--Cliente-->
-                <input type='hidden' name='tipo' id='tipo' value='1'>
+                <input type='hidden' name='tipo' id='tipo' value='2'>
                 <div class='form-group'>
-                    <label for='apellido'>Apellido</label>
-                    <input class='form-control' type='text' name='apellido' id='apellido' value='{{ Request::old('apellido') }}'>
+                    <label for='nie'>Nie</label>
+                    <input class='form-control' type='text' name='nie' id='nie' value='{{ Request::old('nie') }}'>
                 </div>
-                <div class='form-group'>
-                    <label for='fecha_nacimiento'>Fecha Nacimiento</label>
-                    <input class='form-control' type='date' name='fecha_nacimiento' id='fecha_nacimiento' value='{{ Request::old('fecha_nacimiento') }}'>
-                </div>
-                <button type='submit' class='btn btn-primary'>Registrarse</button>
+                <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>
-        </div>
-        <div class='col-md-6'>
-            <form action='{{ route('singin') }}' method='post'>
-                <h3>Sign in</h3>
-                <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
-                    <label for='email'>Email</label>
-                    <input class='form-control' type='text' name='email' id='email' value='{{ Request::old('email') }}'>
-                </div>
-                <div class='form-group {{ $errors->has('password') ? 'has-error' : ''}}'>
-                    <label for='email'>Contraseña</label>
-                    <input class='form-control' type='password' name='password' id='password'>
-                </div>
-                <button type='submit' class='btn btn-primary'>Entrar</button>
-            </form>
+            <hr class="featurette-divider">
         </div>
     </div>
 @endsection

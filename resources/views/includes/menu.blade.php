@@ -13,14 +13,19 @@
     </div>
       <ul class="nav navbar-nav navbar-right"><!-- Crear per dintre de sesio y fore -->
         @if(Auth::check())
-        <form class="navbar-form">
-            <a class="btn btn-default" href="#" role="button">pag a</a>
-            <a class="btn btn-default" href="#" role="button">pag b</a>
-            <a class="btn btn-default" href="#" role="button">pag c</a>
+        <form class="navbar-form" action='{{ route('logout') }}' method='get'>
+            <a class="btn" href="#" role="button">pag a</a>
+            <a class="btn" href="#" role="button">pag b</a>
+            <a class="btn" href="#" role="button">pag c</a>
+            <input type='hidden' name='_token' value='{{ Session::token() }}'>
+            <button type="submit" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon-off"></span> Off 
+            </button>
         </form>
+        <!--glyphicon glyphicon-off-->
         @else
         <form class="navbar-form" action='{{ route('singin') }}' method='post'>
-          <input type='hidden' name='_token' value='{{ Session::token() }}'>
+            <input type='hidden' name='_token' value='{{ csrf_token() }}'>
             <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
               <input type="text" placeholder="Email" class="form-control"  name='email' id='email' value='{{ Request::old('email') }}'>
             </div>

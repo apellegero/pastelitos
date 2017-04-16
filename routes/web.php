@@ -51,4 +51,9 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UploadControler@upload',
 		'as' => 'upload'
 	]);
+
+	Route::get('/logout', [
+		'uses' => 'UserController@logout',
+		'as' => 'logout'
+	]);
 });

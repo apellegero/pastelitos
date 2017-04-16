@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Cliente;
 use App\Tienda;
+use integer;
 use \Input as Input;
 
 class UserController extends Controller
@@ -56,7 +57,7 @@ class UserController extends Controller
 		//Repartidor
 		}
 		Auth::login($user);
-		getPagPrincipal();
+		return redirect()->route('pagprincipal');
 	}
 
 	public function singIn(Request $req){
@@ -67,9 +68,14 @@ class UserController extends Controller
 		]);
 
 		if(Auth::attempt(['email' => $req['email'],'password' => $req['password']])){
-			return redirect()->back();
+			return redirect()->route('pagprincipal');
 		}
-		getPagPrincipal();
+		redirect()->back();
+	}
+
+	public function logout(){
+		Auth::logout();
+		return view('index');
 	}
 
 	public function getPagSingUp(){
@@ -80,7 +86,16 @@ class UserController extends Controller
 	}
 	public function getPagPrincipal(){
 		//por tipo de usuario
-		return view('welcome');
+		if(Auth::user()->tipo_id==1){
+			return view('welcome');
+		}
+		if(Auth::user()->tipo_id==2){
+			return view('perfiltienda');
+		}
+		if(Auth::user()->tipo_id==3){
+			return view('welcome');
+		}
+		return view('index');
 	}
 	public function getPagindex(){
 		return view('index');

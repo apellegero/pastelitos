@@ -65,4 +65,8 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@perfilcliente',
 		'as' => 'perfilcliente'
 	]);
+	Route::get('/editarperfiltienda', [
+		'uses' => 'UserController@editarperfiltienda',
+		'as' => 'editarperfiltienda'
+	]);
 });

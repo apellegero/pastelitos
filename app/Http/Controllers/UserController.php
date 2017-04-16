@@ -103,6 +103,9 @@ class UserController extends Controller
 	public function perfilcliente(){
 		return view('perfilcliente');
 	}
+	public function editarperfiltienda(){
+		return view('editarperfiltienda');
+	}
 	public function uploadperfil(){
 		$this->validate($req, [
 			'email' => 'required|email|unique:users',

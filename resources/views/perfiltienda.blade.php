@@ -24,6 +24,9 @@
                 <img src="uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
                 <h2 class="featurette-heading">{{Auth::user()->nombre}}<small style="margin-left: 5px;">{{Auth::user()->nusuario}}</small></h2>
                 <form action='{{ route('upload') }}' method='post' enctype='multipart/form-data'>
+                    <!--Usaremos este input hidden para saber a donde redireccionar -->
+                    <input type='hidden' name='from' id='from' value='perfiltienda'>
+
                     <label for='foto'>Foto de la tienda</label>
                     <input type='file' name='foto' id='foto' value=''>
                     <input type="hidden" name="_token" value="{{csrf_token()}}">

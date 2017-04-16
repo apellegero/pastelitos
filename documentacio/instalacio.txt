@@ -1,0 +1,21 @@
+****Instalació****
+
+1) bajar de GitHub https://github.com/apellegero/pastelitos (intelliJ idea)
+2) abrir xampp (Sql, Apache)
+3) Poner el proyecto en C:\xampp\htdocs\
+4) anar a http://localhost/phpmyadmin/ i crear la base de dades "pastelitos"
+5) crear a /pastelitos un archiu anomenat ".env" copiar el que hi ha en ".env.example" i cambiar els seguents camps:
+	DB_DATABASE=pastelitos
+	DB_USERNAME=root
+	DB_PASSWORD=
+6) abrir cmd
+	ir a la carpeta de pastelitos
+	ejecutar: 
+		composer update --no-scripts
+		php artisan migrate
+
+
+
+****Error****
+
+RuntimeException in Encrypter.php line 43 -> php artisan key:generate

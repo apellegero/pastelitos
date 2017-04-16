@@ -28,3 +28,10 @@ Agafarem com a referència UserController, ja que gestiona la resposta d'un form
 3- Route
 
 Ara toca crear la ruta. A routes\web.php tenim les rutes. Només haurem d'afegir la nostra igual que en el cas del singup.
+
+------------------------------------
+Notas:
+
+En el cas de que el model no estigui creat, el crearem a traves de aquest "comando" desde el cmd:
+php artisan make:model Cliente
+

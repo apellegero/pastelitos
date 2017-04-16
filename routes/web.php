@@ -48,7 +48,7 @@ Route::group(['middleware'=>['web']], function(){
 	]);
 
 	Route::post('/upload', [
-		'uses' => 'UploadControler@upload',
+		'uses' => 'UploadController@upload',
 		'as' => 'upload'
 	]);
 

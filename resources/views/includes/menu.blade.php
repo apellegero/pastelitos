@@ -14,8 +14,16 @@
       <ul class="nav navbar-nav navbar-right"><!-- Crear per dintre de sesio y fore -->
         @if(Auth::check())
         <form class="navbar-form" action='{{ route('logout') }}' method='get'>
-            <a class="btn" href="#" role="button">pag a</a>
-            <a class="btn" href="#" role="button">pag b</a>
+            <!--Tienda -->
+            <a class="btn" href="#" role="button">perfil tienda</a>
+            <a class="btn" href="#" role="button">estadisticas</a>
+            <a class="btn" href="#" role="button">historico pedidos</a>
+            <a class="btn" href="#" role="button">productos tienda</a>
+            <a class="btn" href="#" role="button">repartidores</a>
+
+            <!--Cliente -->
+            <a class="btn" href="#" role="button">pedidos</a>
+            <a class="btn" href="#" role="button">carrito</a>
             <a class="btn" href="{{ route('perfilcliente')}}" role="button">perfil cliente</a>
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
             <button type="submit" class="btn btn-default btn-sm">

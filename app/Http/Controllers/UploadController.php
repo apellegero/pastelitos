@@ -25,7 +25,7 @@ class UploadController extends Controller{
 				return view($request['from']);
 			}
 			else{
-				return view('/');//no funciona
+				return view('/');
 			}
 		}
 	}

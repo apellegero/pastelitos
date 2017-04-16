@@ -100,4 +100,19 @@ class UserController extends Controller
 	public function getPagindex(){
 		return view('index');
 	}
+	public function perfilcliente(){
+		return view('perfilcliente');
+	}
+	public function uploadperfil(){
+		$this->validate($req, [
+			'email' => 'required|email|unique:users',
+			'nusuario' => 'required|unique:users',
+			'password' => 'required|min:4'
+			
+		]);
+
+
+
+		redirect()->back();
+	}
 }

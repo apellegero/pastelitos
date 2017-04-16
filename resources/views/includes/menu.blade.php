@@ -16,7 +16,7 @@
         <form class="navbar-form" action='{{ route('logout') }}' method='get'>
             <a class="btn" href="#" role="button">pag a</a>
             <a class="btn" href="#" role="button">pag b</a>
-            <a class="btn" href="#" role="button">pag c</a>
+            <a class="btn" href="{{ route('perfilcliente')}}" role="button">perfil cliente</a>
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
             <button type="submit" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-off"></span> Off 

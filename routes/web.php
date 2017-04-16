@@ -56,4 +56,13 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@logout',
 		'as' => 'logout'
 	]);
+
+	Route::get('/uploadperfil', [
+		'uses' => 'UserController@uploadperfil',
+		'as' => 'uploadperfil'
+	]);
+	Route::get('/perfilcliente', [
+		'uses' => 'UserController@perfilcliente',
+		'as' => 'perfilcliente'
+	]);
 });

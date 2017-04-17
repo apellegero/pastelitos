@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Inicio pastelitos
+    perfil y editar cliente
 @endsection
 
 @section('content')

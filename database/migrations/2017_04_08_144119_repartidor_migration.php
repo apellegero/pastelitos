@@ -16,6 +16,7 @@ class RepartidorMigration extends Migration
         Schema::create('repartidor', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_user');
+            $table->integer('id_tienda');
             $table->string('apellido');
             $table->timestamps();
         });

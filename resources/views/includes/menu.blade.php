@@ -15,8 +15,7 @@
         @if(Auth::check())
         <form class="navbar-form" action='{{ route('logout') }}' method='get'>
             <!--Tienda -->
-            <a class="btn" href="#" role="button">perfil tienda</a>
-            <a class="btn" href="{{ route('editarperfiltienda')}}" role="button">editar perfil tienda</a>
+            <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil tienda</a>
             <a class="btn" href="#" role="button">estadisticas</a>
             <a class="btn" href="#" role="button">historico pedidos</a>
             <a class="btn" href="#" role="button">productos tienda</a>

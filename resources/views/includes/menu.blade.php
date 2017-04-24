@@ -20,7 +20,7 @@
             <a class="btn" href="#" role="button">estadisticas</a>
             <a class="btn" href="#" role="button">historico pedidos</a>
             <a class="btn" href="#" role="button">productos tienda</a>
-            <a class="btn" href="#" role="button">repartidores</a>
+            <a class="btn" href="{{route('gestorrepartidores')}}" role="button">repartidores</a>
 
             <!--Cliente -->
             <a class="btn" href="#" role="button">pedidos</a>

@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Cliente;
 use App\Tienda;
+use App\Repartidor;
 use integer;
 use \Input as Input;
 
@@ -55,6 +56,12 @@ class UserController extends Controller
 		}
 		if($tipo==3){
 		//Repartidor
+			$repartidor = new Repartidor();
+			$repartidor->id_user = $user->id;
+			$repartidor->id_tienda = Auth::user()->id;
+			$repartidor->apellido = $req['apellido'];
+			$repartidor->save();
+			return redirect()->route('gestorrepartidores');
 		}
 		Auth::login($user);
 		return redirect()->route('pagprincipal');
@@ -93,7 +100,7 @@ class UserController extends Controller
 			return view('perfiltienda');
 		}
 		if(Auth::user()->tipo_id==3){
-			return view('welcome');
+			return view('gestorrepartidores');
 		}
 		return view('index');
 	}
@@ -114,8 +121,28 @@ class UserController extends Controller
 			
 		]);
 
-
-
 		redirect()->back();
+	}
+	public function gestorrepartidores(){
+		$id_tienda = Auth::user()->id;
+		$repartidores = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_tienda', '=', Auth::user()->id)->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono','repartidor.apellido')->get();	
+		return view('gestorrepartidores', compact('repartidores'));
+	}
+	public function nuevorepartidor(){
+		return view('nuevorepartidor');
+	}
+	public function editarrepartidor(Request $req){
+		return view('editarrepartidor');
+	}
+	public function updaterepartidor(Request $req){
+		return view('updaterepartidor');
+	}
+	public function getid(Request $req){
+		$id_tienda = Auth::user()->id;
+		$repartidores = DB::table('getid')
+		->join('editarrepartidor', 'users.id', '=', 'user.id_user')
+		->select('user.nombre','user.email','user.telefono','user.apellido'	)
+		->get();
+		return view('editarrepartidor', compact('editarrepartidor'));
 	}
 }

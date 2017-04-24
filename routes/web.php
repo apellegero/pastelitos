@@ -69,4 +69,24 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@editarperfiltienda',
 		'as' => 'editarperfiltienda'
 	]);
+	Route::get('/gestorrepartidores', [
+		'uses' => 'UserController@gestorrepartidores',
+		'as' => 'gestorrepartidores'
+	]);
+	Route::get('/nuevorepartidor', [
+		'uses' => 'UserController@nuevorepartidor',
+		'as' => 'nuevorepartidor'
+	]);
+	Route::post('/editarrepartidor', [
+		'uses' => 'UserController@editarrepartidor',
+		'as' => 'editarrepartidor'
+	]);
+	Route::post('/updaterepartidor', [
+		'uses' => 'UserController@updaterepartidor',
+		'as' => 'updaterepartidor'
+	]);
+	Route::post('/getid', [
+		'uses' => 'UserController@getid',
+		'as' => 'getid'
+	]);
 });

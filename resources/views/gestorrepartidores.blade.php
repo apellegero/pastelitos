@@ -30,8 +30,16 @@
   @foreach($repartidores as $repartidor)
  	 	<tr> 
  			<th scope="row"></th>
-    		<td>
-        <a class="btn btn-link" href="editarrepartidor/{{$repartidor->id}}" role="button">{{$repartidor->nusuario}}</a>
+    		<td><form action="{{route('getid')}}" method="post" value="{{$repartidor->id}}">
+        <input type="hidden" name="nusuario" value="{{$repartidor->nusuario}}">
+        <input type="hidden" name="email" value="{{$repartidor->email}}">
+        <input type="hidden" name="nombre" value="{{$repartidor->nombre}}">
+        <input type="hidden" name="apellido" value="{{$repartidor->apellido}}">
+        <input type="hidden" name="telefono" value="{{$repartidor->telefono}}">
+        <input type='hidden' name='_token' value='{{ Session::token() }}'>
+        <button type="submit" class="btn btn-link">{{$repartidor->nusuario}}</button>
+
+        </form>
         </td> 
         <td>{{$repartidor->nombre}}</td><td>{{$repartidor->apellido}}</td><td>{{$repartidor->email}}</td><td>{{$repartidor->telefono}}</td>
     </tr> 

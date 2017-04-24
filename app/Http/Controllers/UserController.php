@@ -70,7 +70,8 @@ class UserController extends Controller
 		if(Auth::attempt(['email' => $req['email'],'password' => $req['password']])){
 			return redirect()->route('pagprincipal');
 		}
-		redirect()->back();
+		echo 'error usuario no existe en data base';
+		return redirect()->route('pagprincipal');
 	}
 
 	public function logout(){
@@ -86,14 +87,16 @@ class UserController extends Controller
 	}
 	public function getPagPrincipal(){
 		//por tipo de usuario
-		if(Auth::user()->tipo_id==1){
-			return view('welcome');
-		}
-		if(Auth::user()->tipo_id==2){
-			return view('perfiltienda');
-		}
-		if(Auth::user()->tipo_id==3){
-			return view('welcome');
+		if(Auth::check()){
+			if(Auth::user()->tipo_id==1){
+				return view('welcome');
+			}
+			if(Auth::user()->tipo_id==2){
+				return view('principaltienda');
+			}
+			if(Auth::user()->tipo_id==3){
+				return view('welcome');
+			}
 		}
 		return view('index');
 	}

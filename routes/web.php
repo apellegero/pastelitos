@@ -69,4 +69,29 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@editarperfiltienda',
 		'as' => 'editarperfiltienda'
 	]);
+	//Rutas productos
+	Route::get('/gestorproductos', [
+		'uses' => 'ProductoController@gestorproductos',
+		'as' => 'gestorproductos'
+	]);
+	Route::get('/nuevoproducto', [
+		'uses' => 'ProductoController@nuevoproducto',
+		'as' => 'nuevoproducto'
+	]);
+	Route::get('/editarproducto/{id}', [
+		'uses' => 'ProductoController@editarproducto',
+		'as' => 'editarproducto'
+	]);
+	Route::post('/insertproducto', [
+		'uses' => 'ProductoController@insert',
+		'as' => 'insertproducto'
+	]);
+	Route::post('/uploadproducto', [
+		'uses' => 'UploadController@uploadproducto',
+		'as' => 'uploadproducto'
+	]);
+	Route::post('/updateproducto', [
+		'uses' => 'ProductoController@update',
+		'as' => 'updateproducto'
+	]);	
 });

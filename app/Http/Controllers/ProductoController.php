@@ -50,6 +50,7 @@ class ProductoController extends Controller{
 		return view('gestorproductos', compact('productos'));
 	}
 	public function editarproducto($id){
+		$id_tienda = Auth::user()->id;
 		$productos = DB::table('producto')->where('producto.id', '=', $id)->distinct()->get();
 		return view('editarproducto', compact('productos'));
 	}

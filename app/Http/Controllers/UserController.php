@@ -89,7 +89,9 @@ class UserController extends Controller
 		//por tipo de usuario
 		if(Auth::check()){
 			if(Auth::user()->tipo_id==1){
-				return view('welcome');
+				$tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
+
+                                return view('principalcliente', compact('tiendas'));
 			}
 			if(Auth::user()->tipo_id==2){
 				return view('principaltienda');
@@ -109,16 +111,24 @@ class UserController extends Controller
 	public function editarperfiltienda(){
 		return view('perfiltienda');
 	}
-	public function uploadperfil(){
-		$this->validate($req, [
-			'email' => 'required|email|unique:users',
-			'nusuario' => 'required|unique:users',
-			'password' => 'required|min:4'
-			
-		]);
+	    public function editarperfilcliente(){
+            return view('editperfilcliente');
+        }
+        public function perfiltienda(){
+            return view('perfiltienda');
+        }
+        public function editarperfiltienda(){
+            return view('editperfiltienda');
+        }
+        public function uploadperfil(){
 
+        }
 
+    }
+    public function principalcliente()
+    {
+        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
 
-		redirect()->back();
-	}
+        return view('principalcliente', compact('tiendas'));
+    }
 }

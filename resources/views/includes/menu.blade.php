@@ -21,7 +21,7 @@
               <a class="btn" href="#" role="button">estadisticas</a>
               <a class="btn" href="#" role="button">repartidores</a>
               <a class="btn" href="{{ route('tienda')}}" role="button">vista del cliente</a>
-              <a class="btn" href="#" role="button">perfil</a>
+              <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil</a>
             @endif
             @if(Auth::user()->tipo_id==1)
               <!--Cliente -->

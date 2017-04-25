@@ -131,18 +131,17 @@ class UserController extends Controller
 	public function nuevorepartidor(){
 		return view('nuevorepartidor');
 	}
-	public function editarrepartidor(Request $req){
-		return view('editarrepartidor');
+	public function editarrepartidor($id){
+		$repartidores = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_user', '=', $id)->distinct()->get();
+		return view('editarrepartidor', compact('repartidores'));
 	}
 	public function updaterepartidor(Request $req){
-		return view('updaterepartidor');
+		$id = $req['id'];
+		$producto = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono'], 'apellido' => $req['apellido']));
+		return redirect()->route('gestorrepartidores');
 	}
-	public function getid(Request $req){
-		$id_tienda = Auth::user()->id;
-		$repartidores = DB::table('getid')
-		->join('editarrepartidor', 'users.id', '=', 'user.id_user')
-		->select('user.nombre','user.email','user.telefono','user.apellido'	)
-		->get();
-		return view('editarrepartidor', compact('editarrepartidor'));
+	public function eliminarrepartidor($id){
+		DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_user', '=', $id)->delete();
+		return $this->gestorrepartidores();
 	}
 }

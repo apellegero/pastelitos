@@ -77,7 +77,7 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@nuevorepartidor',
 		'as' => 'nuevorepartidor'
 	]);
-	Route::post('/editarrepartidor', [
+	Route::get('/editarrepartidor/{id}', [
 		'uses' => 'UserController@editarrepartidor',
 		'as' => 'editarrepartidor'
 	]);
@@ -85,8 +85,9 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@updaterepartidor',
 		'as' => 'updaterepartidor'
 	]);
-	Route::post('/getid', [
-		'uses' => 'UserController@getid',
-		'as' => 'getid'
+	Route::delete('/editarrepartidor/{id}',[
+		'uses' => 'UserController@eliminarrepartidor',
+		'as' => 'eliminarrepartidor'
 	]);
+
 });

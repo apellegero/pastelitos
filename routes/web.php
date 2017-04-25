@@ -94,4 +94,8 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'ProductoController@update',
 		'as' => 'updateproducto'
 	]);	
+		Route::post('/tienda', [
+		'uses' => 'TiendaController@tienda',
+		'as' => 'tienda'
+	]);	
 });

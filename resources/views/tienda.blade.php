@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Tienda
+    Gestor Productos
 @endsection
 
 @section('content')

@@ -65,9 +65,9 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@perfilcliente',
 		'as' => 'perfilcliente'
 	]);
-	Route::get('/editarperfilcliente', [
-       		'uses' => 'UserController@editarperfilcliente',
-       		'as' => 'editarperfilcliente'
+	Route::get('/editperfilcliente', [
+       		'uses' => 'UserController@editperfilcliente',
+       		'as' => 'editperfilcliente'
        	]);
 	Route::get('/perfiltienda', [
     		'uses' => 'UserController@perfiltienda',
@@ -105,5 +105,9 @@ Route::group(['middleware'=>['web']], function(){
 		Route::post('/tienda', [
 		'uses' => 'TiendaController@tienda',
 		'as' => 'tienda'
-	]);	
+	]);
+    Route::post('/updatecliente', [
+        'uses' => 'UserController@updatecliente',
+        'as' => 'updatecliente'
+    ]);
 });

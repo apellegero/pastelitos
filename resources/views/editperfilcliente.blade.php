@@ -38,18 +38,35 @@ editar cliente
 <div class='row'>
     <div class='col-md-6 col-md-offset-3'>
 
-        </form>
         <form action="{{route('updatecliente')}}" method='post'>
             <input type="hidden" name="id" value="{{$cliente->id}}">
+            <!--General-->
+            <h4>Datos de usuario</h4>
             <div class='form-group'>
-                <label for='nombre'>Nombre</label>
-                <input class='form-control' type='text' name='nombre' id='nombre' value='{{$cliente->nombre}}'>
+                <label for='email'>Email</label>
+                <input class='form-control' type='text' name='email' id='email' value='{{$cliente->email}}'>
             </div>
 
+            <h4>Datos personales</h4>
+            <div class='form-group'>
+                <label for='telefono'>Telefono</label>
+                <input class='form-control' type='text' name='telefono' id='telefono'  value='{{$cliente->telefono}}'>
+            </div>
+            <div class='form-group'>
+                <label for='nombre'>Nombre</label>
+                <input class='form-control' type='text' name='nombre' id='nombre'  value='{{$cliente->nombre}}'>
+            </div>
+            <!-- NO TOCAR TOKEN -->
+            <input type='hidden' name='_token' value='{{ Session::token() }}'>
+            <!--Cliente-->
+
+            <div class='form-group'>
+                <label for='apellido'>Apellido</label>
+                <input class='form-control' type='text' name='apellido' id='apellido'  value='{{$cliente->apellido}}'>
+            </div>
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
             <button type='submit' class='btn btn-info'>Editar</button>
-        </form>
-        <hr class="featurette-divider">
+            <hr class="featurette-divider">
     </div>
     @endforeach
 </div>

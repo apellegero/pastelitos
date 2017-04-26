@@ -65,16 +65,41 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@perfilcliente',
 		'as' => 'perfilcliente'
 	]);
-	Route::get('/editarperfilcliente', [
-       		'uses' => 'UserController@editarperfilcliente',
-       		'as' => 'editarperfilcliente'
+	Route::get('/editperfilcliente', [
+       		'uses' => 'UserController@editperfilcliente',
+       		'as' => 'editperfilcliente'
        	]);
 	Route::get('/perfiltienda', [
     		'uses' => 'UserController@perfiltienda',
     		'as' => 'perfiltienda'
     	]);
-	Route::get('/editarperfiltienda', [
-		'uses' => 'UserController@editarperfiltienda',
-		'as' => 'editarperfiltienda'
+	Route::get('/editperfiltienda', [
+		'uses' => 'UserController@editperfiltienda',
+		'as' => 'editperfiltienda'
 	]);
+	Route::get('/comprarentienda',[
+	    'uses' => 'UserController@comprarentienda',
+        'as' => 'comprarentienda'
+
+    ]);
+    Route::get('/updatecliente', [
+        'uses' => 'UserController@updatecliente',
+        'as' => 'updatecliente'
+    ]);
+
+    Route::get('/updatecliente2', [
+        'uses' => 'UserController@updatecliente2',
+        'as' => 'updatecliente2'
+    ]);
+
+
+    Route::get('/seleccionartienda/{id}', [
+        'uses' => 'UserController@seleccionartienda',
+        'as' => 'seleccionartienda'
+    ]);
+
+    Route::get('/updatetienda',[
+            'uses' => 'UserController@updatetienda',
+            'as' => 'updatetienda']);
 });
+

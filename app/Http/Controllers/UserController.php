@@ -97,14 +97,18 @@ class UserController extends Controller
     public function perfilcliente(){
         return view('perfilcliente');
     }
-    public function editarperfilcliente(){
-        return view('editperfilcliente');
+    public function editperfilcliente(){
+        $id =  Auth::user()->id;
+        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
+        return view('editperfilcliente',compact('clientes'));
     }
     public function perfiltienda(){
         return view('perfiltienda');
     }
-    public function editarperfiltienda(){
-        return view('editperfiltienda');
+    public function editperfiltienda(){
+        $id =  Auth::user()->id;
+        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->where('tienda.id_user', '=', $id)->distinct()->get();
+        return view('editperfilcliente',compact('tiendas'));
     }
     public function uploadperfil(){
 
@@ -114,5 +118,36 @@ class UserController extends Controller
         $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
 
         return view('principalcliente', compact('tiendas'));
+    }
+    public function seleccionartienda($id)
+    {
+        $id_tienda = Auth::user()->id;
+        $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->where('tienda.id_user', '=', $id)->distinct()->get();
+        echo $tiendas;
+        return view('tienda', compact('tiendas'));
+
+    }
+    public function updatetienda(Request $req)
+    {
+        $id = $req['id'];
+        echo $req;
+        $producto = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->where('tienda.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));
+        return redirect()->route('perfiltienda');
+
+    }
+    public function updatecliente(Request $req)
+    {
+        $id = Auth::user()->id;
+        echo $req;
+        $producto = DB::table('cliente')->where('cliente.id', '=', $id)->update(array('users.nombre' => $req['nombre'], 'users.email' => $req['email'], 'users.telefono' => $req['telefono'], 'cliente.apellido' => $req['apellido']));
+        echo $producto;
+        return redirect()->route('perfilcliente');
+    }
+    public function updatecliente2(Request $req){
+        $id = Auth::user()->id;
+        echo $req;
+        $producto = DB::table('cliente')->where('cliente.id', '=', $id)->update(array('users.nombre' => $req['nombre'], 'users.email' => $req['email'], 'users.telefono' => $req['telefono'], 'cliente.apellido' => $req['apellido']));
+        echo $producto;
+        return redirect()->route('perfilcliente');
     }
 }

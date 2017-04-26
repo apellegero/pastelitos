@@ -24,7 +24,7 @@
             <div class='form-group'>
                 <img src="uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
                 <h2 class="featurette-heading">{{Auth::user()->nombre}}<small style="margin-left: 5px;">{{Auth::user()->nusuario}}</small></h2>
-                <a class="btn" href="{{ route('editarperfilcliente')}}" role="button">editar perfil</a>
+                <a class="btn" href="editperfilcliente" role="button">editar perfil</a>
             </div>
         </div>
     </div>

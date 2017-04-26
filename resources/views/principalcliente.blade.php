@@ -31,14 +31,15 @@
         <tr>
             <th scope="row"></th>
 
-            <td><form action="{{route('perfiltienda')}}" method="post">
+            <td><form action="{{route('comprarentienda')}}" method="post" value="info">
                     <input type="hidden" name="nusuario" value="{{$tienda->nusuario}}">
                     <input type="hidden" name="email" value="{{$tienda->email}}">
                     <input type="hidden" name="nombre" value="{{$tienda->nombre}}">
                     <input type="hidden" name="telefono" value="{{$tienda->telefono}}">
 
                     <input type='hidden' name='_token' value='{{ Session::token() }}'>
-                    <button type="submit" class="btn btn-link">{{$tienda->nusuario}}</button>
+            <td><a class="btn btn-info" href="seleccionartienda/{{$tienda->id}}" role="button"></a></td>
+
                 </form>
             </td>
             <td>{{$tienda->nombre}}</td><td>{{$tienda->email}}</td><td>{{$tienda->telefono}}</td>

@@ -34,10 +34,11 @@
         </div>
     </div>
     <hr class="featurette-divider">
+@foreach($tiendas as $tienda)
 
    <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
-            <form action='{{ route('uploadperfil') }}' method='post'>
+            <form action='{{ route('updatetienda') }}' method='post'>
                 <!--General-->
                 <h4>Datos de usuario</h4>
                 <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
@@ -60,15 +61,12 @@
                 <!-- NO TOCAR TOKEN -->
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>
                 <!--Cliente-->
-                <input type='hidden' name='tipo' id='tipo' value='1'>
-                <div class='form-group'>
-                    <label for='apellido'>Apellido</label>
-                    <input class='form-control' type='text' name='apellido' id='apellido' value='{{ Request::old('apellido') }}'>
-                </div>
-                
+
+
                 <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>
             <hr class="featurette-divider">
         </div>
+@endforeach
     </div>
 @endsection

@@ -14,17 +14,21 @@
       <ul class="nav navbar-nav navbar-right"><!-- Crear per dintre de sesio y fore -->
         @if(Auth::check())
         <form class="navbar-form" action='{{ route('logout') }}' method='get'>
-            <!--Tienda -->
-            <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil tienda</a>
-            <a class="btn" href="#" role="button">estadisticas</a>
-            <a class="btn" href="#" role="button">historico pedidos</a>
-            <a class="btn" href="#" role="button">productos tienda</a>
-            <a class="btn" href="#" role="button">repartidores</a>
-
-            <!--Cliente -->
-            <a class="btn" href="#" role="button">pedidos</a>
-            <a class="btn" href="#" role="button">carrito</a>
-            <a class="btn" href="{{ route('perfilcliente')}}" role="button">perfil cliente</a>
+             @if(Auth::user()->tipo_id==2)
+              <!--Tienda -->
+              <a class="btn" href="{{ route('gestorproductos')}}" role="button">productos</a>
+              <a class="btn" href="#" role="button">historico pedidos</a>
+              <a class="btn" href="#" role="button">estadisticas</a>
+              <a class="btn" href="#" role="button">repartidores</a>
+              <a class="btn" href="{{ route('tienda')}}" role="button">vista del cliente</a>
+              <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil</a>
+            @endif
+            @if(Auth::user()->tipo_id==1)
+              <!--Cliente -->
+              <a class="btn" href="#" role="button">pedidos</a>
+              <a class="btn" href="#" role="button">carrito</a>
+              <a class="btn" href="{{ route('perfilcliente')}}" role="button">perfil cliente</a>
+            @endif
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
             <button type="submit" class="btn btn-default btn-sm">
               <span class="glyphicon glyphicon-off"></span> Off 

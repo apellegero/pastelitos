@@ -4,3 +4,15 @@
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
+.list_custom dt{
+	width: initial;
+	float: left;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.list_custom dd{
+	margin-left: 140px;
+}

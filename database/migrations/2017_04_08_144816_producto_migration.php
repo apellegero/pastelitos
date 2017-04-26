@@ -16,6 +16,7 @@ class ProductoMigration extends Migration
         Schema::create('producto', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_tienda');
+            $table->string('nombre');
             $table->string('foto');
             $table->integer('id_categoria');
             $table->text('descripcion');

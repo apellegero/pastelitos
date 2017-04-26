@@ -65,20 +65,48 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'UserController@perfilcliente',
 		'as' => 'perfilcliente'
 	]);
-	Route::get('/editperfilcliente', [
-       		'uses' => 'UserController@editperfilcliente',
-       		'as' => 'editperfilcliente'
+	Route::get('/editarperfilcliente', [
+       		'uses' => 'UserController@editarperfilcliente',
+       		'as' => 'editarperfilcliente'
        	]);
 	Route::get('/perfiltienda', [
     		'uses' => 'UserController@perfiltienda',
     		'as' => 'perfiltienda'
     	]);
-	Route::get('/editperfiltienda', [
-		'uses' => 'UserController@editperfiltienda',
-		'as' => 'editperfiltienda'
+	Route::get('/editarperfiltienda', [
+		'uses' => 'UserController@editarperfiltienda',
+		'as' => 'editarperfiltienda'
 	]);
-	Route::get('/comprarentienda',[
-	    'uses' => 'UserController@comprarentienda',
+    Route::get('/gestorproductos', [
+        'uses' => 'ProductoController@gestorproductos',
+        'as' => 'gestorproductos'
+    ]);
+    Route::get('/nuevoproducto', [
+        'uses' => 'ProductoController@nuevoproducto',
+        'as' => 'nuevoproducto'
+    ]);
+    Route::get('/editarproducto/{id}', [
+        'uses' => 'ProductoController@editarproducto',
+        'as' => 'editarproducto'
+    ]);
+    Route::post('/insertproducto', [
+        'uses' => 'ProductoController@insert',
+        'as' => 'insertproducto'
+    ]);
+    Route::post('/uploadproducto', [
+        'uses' => 'UploadController@uploadproducto',
+        'as' => 'uploadproducto'
+    ]);
+    Route::post('/updateproducto', [
+        'uses' => 'ProductoController@update',
+        'as' => 'updateproducto'
+    ]);
+    Route::post('/tienda', [
+        'uses' => 'TiendaController@tienda',
+        'as' => 'tienda'
+    ]);
+    Route::get('/comprarentienda',[
+        'uses' => 'UserController@comprarentienda',
         'as' => 'comprarentienda'
 
     ]);
@@ -99,7 +127,6 @@ Route::group(['middleware'=>['web']], function(){
     ]);
 
     Route::get('/updatetienda',[
-            'uses' => 'UserController@updatetienda',
-            'as' => 'updatetienda']);
+        'uses' => 'UserController@updatetienda',
+        'as' => 'updatetienda']);
 });
-

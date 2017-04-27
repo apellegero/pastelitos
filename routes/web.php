@@ -101,7 +101,7 @@ Route::group(['middleware'=>['web']], function(){
 	Route::post('/updateproducto', [
 		'uses' => 'ProductoController@update',
 		'as' => 'updateproducto'
-	]);	
+	]);
 		Route::post('/tienda', [
 		'uses' => 'TiendaController@tienda',
 		'as' => 'tienda'
@@ -114,4 +114,25 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'UserController@updatetienda',
         'as' => 'updatetienda'
     ]);
+    //rutas repartidor
+    Route::get('/gestorrepartidores', [
+    		'uses' => 'UserController@gestorrepartidores',
+    		'as' => 'gestorrepartidores'
+    	]);
+    	Route::get('/nuevorepartidor', [
+    		'uses' => 'UserController@nuevorepartidor',
+    		'as' => 'nuevorepartidor'
+    	]);
+    	Route::get('/editarrepartidor/{id}', [
+    		'uses' => 'UserController@editarrepartidor',
+    		'as' => 'editarrepartidor'
+    	]);
+    	Route::post('/updaterepartidor', [
+    		'uses' => 'UserController@updaterepartidor',
+    		'as' => 'updaterepartidor'
+    	]);
+    	Route::delete('/editarrepartidor/{id}',[
+    		'uses' => 'UserController@eliminarrepartidor',
+    		'as' => 'eliminarrepartidor'
+    	]);
 });

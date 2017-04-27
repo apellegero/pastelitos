@@ -14,28 +14,24 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('/', function () {
 	    return view('index');
 	});
-
+	//User Controller (sing in/sing up/session/index)
 	Route::get('/singuppage', [
 	    'uses' => 'UserController@getPagSingUp',
 		'as' => 'singuppage'
 		//'middleware' => 'auth'
 	]);
-
 	Route::get('/singuppagetienda', [
 	    'uses' => 'UserController@getPagSingUpTienda',
 		'as' => 'singuppagetienda'
 	]);
-
 	Route::post('/singup', [
 		'uses' => 'UserController@singUp',
 		'as' => 'singup'
 	]);
-
 	Route::post('/singin', [
 		'uses' => 'UserController@singIn',
 		'as' => 'singin'
 	]);
-
 	Route::get('/indexpage', [
 	    'uses' => 'UserController@getPagindex',
 		'as' => 'indexpage'
@@ -46,36 +42,18 @@ Route::group(['middleware'=>['web']], function(){
 		'as' => 'pagprincipal'
 		//'middleware' => 'auth'
 	]);
-
-	Route::post('/upload', [
-		'uses' => 'UploadController@upload',
-		'as' => 'upload'
-	]);
-
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
 		'as' => 'logout'
 	]);
-
+	//Upload fotos
+	Route::post('/upload', [
+		'uses' => 'UploadController@upload',
+		'as' => 'upload'
+	]);
 	Route::get('/uploadperfil', [
 		'uses' => 'UserController@uploadperfil',
 		'as' => 'uploadperfil'
-	]);
-	Route::get('/perfilcliente', [
-		'uses' => 'UserController@perfilcliente',
-		'as' => 'perfilcliente'
-	]);
-	Route::get('/editperfilcliente', [
-       		'uses' => 'UserController@editperfilcliente',
-       		'as' => 'editperfilcliente'
-       	]);
-	Route::get('/perfiltienda', [
-    		'uses' => 'UserController@perfiltienda',
-    		'as' => 'perfiltienda'
-    	]);
-	Route::get('/editperfiltienda', [
-		'uses' => 'UserController@editperfiltienda',
-		'as' => 'editperfiltienda'
 	]);
 	//Rutas productos
 	Route::get('/gestorproductos', [
@@ -102,37 +80,55 @@ Route::group(['middleware'=>['web']], function(){
 		'uses' => 'ProductoController@update',
 		'as' => 'updateproducto'
 	]);
-		Route::post('/tienda', [
+	//Rutas Tienda
+	Route::post('/tienda', [
 		'uses' => 'TiendaController@tienda',
 		'as' => 'tienda'
 	]);
-    Route::post('/updatecliente', [
-        'uses' => 'UserController@updatecliente',
-        'as' => 'updatecliente'
-    ]);
-    Route::post('/updatetienda', [
-        'uses' => 'UserController@updatetienda',
+	Route::get('/perfiltienda', [
+    		'uses' => 'TiendaController@perfiltienda',
+    		'as' => 'perfiltienda'
+    	]);
+	Route::get('/editperfiltienda', [
+		'uses' => 'TiendaController@editperfiltienda',
+		'as' => 'editperfiltienda'
+	]);
+	Route::post('/updatetienda', [
+        'uses' => 'TiendaController@updatetienda',
         'as' => 'updatetienda'
     ]);
+	//Rutas Cliente
+    Route::post('/updatecliente', [
+        'uses' => 'ClienteController@updatecliente',
+        'as' => 'updatecliente'
+    ]);
+    Route::get('/perfilcliente', [
+		'uses' => 'ClienteController@perfilcliente',
+		'as' => 'perfilcliente'
+	]);
+	Route::get('/editperfilcliente', [
+       		'uses' => 'ClienteController@editperfilcliente',
+       		'as' => 'editperfilcliente'
+       	]);
     //rutas repartidor
     Route::get('/gestorrepartidores', [
-    		'uses' => 'UserController@gestorrepartidores',
-    		'as' => 'gestorrepartidores'
-    	]);
-    	Route::get('/nuevorepartidor', [
-    		'uses' => 'UserController@nuevorepartidor',
-    		'as' => 'nuevorepartidor'
-    	]);
-    	Route::get('/editarrepartidor/{id}', [
-    		'uses' => 'UserController@editarrepartidor',
-    		'as' => 'editarrepartidor'
-    	]);
-    	Route::post('/updaterepartidor', [
-    		'uses' => 'UserController@updaterepartidor',
-    		'as' => 'updaterepartidor'
-    	]);
-    	Route::delete('/editarrepartidor/{id}',[
-    		'uses' => 'UserController@eliminarrepartidor',
-    		'as' => 'eliminarrepartidor'
-    	]);
+    	'uses' => 'RepartidorController@gestorrepartidores',
+    	'as' => 'gestorrepartidores'
+    ]);
+    Route::get('/nuevorepartidor', [
+    	'uses' => 'RepartidorController@nuevorepartidor',
+    	'as' => 'nuevorepartidor'
+    ]);
+    Route::get('/editarrepartidor/{id}', [
+    	'uses' => 'RepartidorController@editarrepartidor',
+    	'as' => 'editarrepartidor'
+    ]);
+    Route::post('/updaterepartidor', [
+    	'uses' => 'RepartidorController@updaterepartidor',
+    	'as' => 'updaterepartidor'
+    ]);
+    Route::delete('/editarrepartidor/{id}',[
+    	'uses' => 'RepartidorController@eliminarrepartidor',
+    	'as' => 'eliminarrepartidor'
+    ]);
 });

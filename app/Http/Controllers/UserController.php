@@ -12,8 +12,7 @@ use App\Repartidor;
 use integer;
 use \Input as Input;
 
-class UserController extends Controller
-{
+class UserController extends Controller{
 
 	public function singUp(Request $req){
 		//Aquí escollim les diferents validacions del formulari
@@ -39,6 +38,21 @@ class UserController extends Controller
 		$user->nombre = $nombre;
 		$user->tipo_id = $tipo;
 		$user->save();
+
+		//direccion
+		if($tipo!=3){
+			$direccion = new Direccion();
+			$direccion->id_usuario = $user->id;
+			$direccion->id_pais = 0;
+			$direccion->id_poblacion = 0;
+			$direccion->id_distrito = 0;
+			$direccion->cp = $req['cp'];
+			$direccion->calle = $req['calle'];
+			$direccion->numero_calle = $req['numero_calle'];
+			$direccion->piso = $req['piso'];
+			$direccion->sugerencias = $req['sugerencias'];
+			$direccion->save();
+		}
 
 		//Com User pot ser Client, Repartidor, o Botiga necessitem crear els altres objectes també
 		if($tipo==1){
@@ -97,7 +111,6 @@ class UserController extends Controller
 		if(Auth::check()){
 			if(Auth::user()->tipo_id==1){
 				$tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
-
                 return view('principalcliente', compact('tiendas'));
             }
             if (Auth::user()->tipo_id == 2) {
@@ -112,30 +125,8 @@ class UserController extends Controller
     public function getPagindex(){
         return view('index');
     }
-    public function perfilcliente(){
-        return view('perfilcliente');
-    }
-    public function editperfilcliente(){
-        $id =  Auth::user()->id;
-        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
-        return view('editperfilcliente',compact('clientes'));
-    }
-    public function perfiltienda(){
-        return view('perfiltienda');
-    }
-    public function editperfiltienda(){
-        $id =  Auth::user()->id;
-        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->where('tienda.id_user', '=', $id)->distinct()->get();
-        return view('editperfiltienda',compact('tiendas'));
-    }
-    public function principalcliente()
-    {
-        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
 
 
-
-		redirect()->back();
-	}
 	public function uploadperfil(){
     		$this->validate($req, [
     			'email' => 'required|email|unique:users',
@@ -143,28 +134,6 @@ class UserController extends Controller
     			'password' => 'required|min:4'
 
     		]);
-
     		redirect()->back();
-    	}
-    	public function gestorrepartidores(){
-    		$id_tienda = Auth::user()->id;
-    		$repartidores = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_tienda', '=', Auth::user()->id)->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono','repartidor.apellido')->get();
-    		return view('gestorrepartidores', compact('repartidores'));
-    	}
-    	public function nuevorepartidor(){
-    		return view('nuevorepartidor');
-    	}
-    	public function editarrepartidor($id){
-    		$repartidores = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_user', '=', $id)->distinct()->get();
-    		return view('editarrepartidor', compact('repartidores'));
-    	}
-    	public function updaterepartidor(Request $req){
-    		$id = $req['id'];
-    		$producto = DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono'], 'apellido' => $req['apellido']));
-    		return redirect()->route('gestorrepartidores');
-    	}
-    	public function eliminarrepartidor($id){
-    		DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_user', '=', $id)->delete();
-    		return $this->gestorrepartidores();
-    	}
+    }
 }

@@ -81,9 +81,9 @@ Route::group(['middleware'=>['web']], function(){
 		'as' => 'updateproducto'
 	]);
 	//Rutas Tienda
-	Route::post('/tienda', [
-		'uses' => 'TiendaController@tienda',
-		'as' => 'tienda'
+	Route::get('/vertienda/{id}', [
+		'uses' => 'TiendaController@vertienda',
+		'as' => 'vertienda'
 	]);
 	Route::get('/perfiltienda', [
     		'uses' => 'TiendaController@perfiltienda',
@@ -130,5 +130,10 @@ Route::group(['middleware'=>['web']], function(){
     Route::delete('/editarrepartidor/{id}',[
     	'uses' => 'RepartidorController@eliminarrepartidor',
     	'as' => 'eliminarrepartidor'
+    ]);
+    //Compra
+    Route::post('/carrito', [
+    	'uses' => 'PedidoController@carrito',
+    	'as' => 'carrito'
     ]);
 });

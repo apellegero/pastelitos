@@ -20,7 +20,7 @@
               <a class="btn" href="#" role="button">historico pedidos</a>
               <a class="btn" href="#" role="button">estadisticas</a>
               <a class="btn" href="{{route('gestorrepartidores')}}" role="button">repartidores</a>
-              <a class="btn" href="{{ route('tienda')}}" role="button">vista del cliente</a>
+              <a class="btn" href="vertienda/{{Auth::user()->id}}" role="button">vista del cliente</a>
               <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil</a>
             @endif
             @if(Auth::user()->tipo_id==1)

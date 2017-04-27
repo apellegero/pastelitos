@@ -9,6 +9,7 @@ use App\User;
 use App\Cliente;
 use App\Tienda;
 use App\Repartidor;
+use App\Direccion;
 use integer;
 use \Input as Input;
 
@@ -110,7 +111,7 @@ class UserController extends Controller{
 		//por tipo de usuario
 		if(Auth::check()){
 			if(Auth::user()->tipo_id==1){
-				$tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
+				$tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->distinct()->get();
                 return view('principalcliente', compact('tiendas'));
             }
             if (Auth::user()->tipo_id == 2) {

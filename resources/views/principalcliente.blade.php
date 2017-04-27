@@ -23,25 +23,21 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>#</th> <th>Usuario</th> <th>Nombre</th><th>Mail</th> <th>Telefono</th>
+            <th>#</th> <th>Foto</th> <th>Nombre</th><th>Mail</th> <th>Telefono</th>
         </tr>
         </thead>
         <tbody>
         @foreach($tiendas as $tienda)
         <tr>
             <th scope="row"></th>
-
-            <td><form action="{{route('perfiltienda')}}" method="post">
-                    <input type="hidden" name="nusuario" value="{{$tienda->nusuario}}">
-                    <input type="hidden" name="email" value="{{$tienda->email}}">
-                    <input type="hidden" name="nombre" value="{{$tienda->nombre}}">
-                    <input type="hidden" name="telefono" value="{{$tienda->telefono}}">
-
-                    <input type='hidden' name='_token' value='{{ Session::token() }}'>
-                    <button type="submit" class="btn btn-link">{{$tienda->nusuario}}</button>
-                </form>
+            <td>
+            <img src="uploads/avatars/{{$tienda->foto}}" style="width: 50px; height: 50px;float: left; margin-right: 25px;">
             </td>
-            <td>{{$tienda->nombre}}</td><td>{{$tienda->email}}</td><td>{{$tienda->telefono}}</td>
+            <td>
+                <a class="btn btn-link" href="vertienda/{{$tienda->id_user}}" role="button">{{$tienda->nombre}}</a>
+            </td>
+            <td>{{$tienda->email}}</td>
+            <td>{{$tienda->telefono}}</td>
             </div>
         </tr>
         @endforeach

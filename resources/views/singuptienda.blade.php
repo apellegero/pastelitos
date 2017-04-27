@@ -51,6 +51,27 @@
                     <label for='nie'>Nie</label>
                     <input class='form-control' type='text' name='nie' id='nie' value='{{ Request::old('nie') }}'>
                 </div>
+                <div class='form-group'>
+                    <label>Descripción</label>
+                    <textarea class="form-control" rows="5" name='sugerencias' id='sugerencias' placeholder="Escribe aquí una descripción para que los clientes la vean." value='{{ Request::old('sugerencias') }}'></textarea>
+                </div>
+                <h4>Dirección</h4>
+                <div class='form-group'>
+                    <label for='calle'>Calle</label>
+                    <input class='form-control' type='text' name='calle' id='calle' placeholder="C/Passeig de Sant Joan Bosco" value='{{ Request::old('calle') }}'>
+                </div>
+                <div class='form-group'>
+                    <label for='numero_calle'>Numero</label>
+                    <input class='form-control' style="width: 50px;" type='text' placeholder="42" name='numero_calle' id='numero_calle' value='{{ Request::old('numero_calle') }}'>
+                </div>
+                <div class='form-group'>
+                    <label for='piso'>Piso</label>
+                    <input class='form-control' type='text' name='piso' id='piso' placeholder="5 1ra" value='{{ Request::old('piso') }}'>
+                </div>
+                <div class='form-group'>
+                    <label for='cp'>CP</label>
+                    <input class='form-control' style="width: 70px;" type='text' name='cp' id='cp' placeholder="08017" value='{{ Request::old('cp') }}'>
+                </div>
                 <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>
             <hr class="featurette-divider">

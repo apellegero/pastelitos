@@ -17,12 +17,11 @@ class PedidoMigration extends Migration
             $table->increments('id');
             $table->date('fecha_entrega');
             $table->double('precio_total', 7,2);
-            $table->double('precio_iva', 7,2);
-            $table->datetime('fecha_pedido');
             $table->integer('id_estado');
-            $table->boolean('pagado_ha_nosotros');
+            $table->boolean('pagado');
             $table->integer('id_valoracion_pedido');
-            $table->integer('id_usuario');
+            $table->integer('id_tienda');
+            $table->integer('id_cliente');
             $table->timestamps();
         });
     }

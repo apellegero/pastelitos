@@ -15,6 +15,7 @@ class LineaProductoMigration extends Migration
     {
         Schema::create('linea_producto', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_pedido');
             $table->integer('id_producto');
             $table->integer('cantidad');
             $table->timestamps();

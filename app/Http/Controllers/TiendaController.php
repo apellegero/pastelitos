@@ -14,11 +14,11 @@ use \Input as Input;
 
 class TiendaController extends Controller{
 
-	public function tienda(){
-		return view('tienda');
+	public function vertienda($id){
+        $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->where('direccion.id_usuario', '=', $id)->distinct()->get();
+        $productos = DB::table('users')->join('producto', 'users.id', '=', 'producto.id_tienda')->where('producto.id_tienda', '=', $id)->distinct()->get();
+        return view('vertienda', compact(['tiendas', 'productos']));
 	}
-
-	//Xavi
 	public function perfiltienda(){
         return view('perfiltienda');
     }
@@ -33,15 +33,4 @@ class TiendaController extends Controller{
         $producto = DB::table('users')->where('users.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));
         return redirect()->route('perfiltienda');
     }
-    /*public function principalcliente(){
-        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
-		redirect()->back();
-	}
-    public function seleccionartienda($id){
-        $id_tienda = Auth::user()->id;
-        $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->where('tienda.id_user', '=', $id)->distinct()->get();
-        echo $tiendas;
-        return view('tienda', compact('tiendas'));
-    }
-    */
 }

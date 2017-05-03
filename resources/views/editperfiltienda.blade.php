@@ -66,6 +66,17 @@
                 <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>
             <hr class="featurette-divider">
+            <form action="{{route('updatetienda2')}}" method='post'>
+                <input type="hidden" name="id" value="{{$tienda->id}}">
+                <!--General-->
+                <h4>Cambiar contraseña</h4>
+                <div class='form-group'>
+                    <label for='email'>password</label>
+                    <input class='passoword' type='password' name='password' id='password'>
+                </div>
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <button type='submit' class='btn btn-info'>Editar</button>
+            </form>
         </div>
 @endforeach
     </div>

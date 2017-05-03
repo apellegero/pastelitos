@@ -14,28 +14,24 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('/', function () {
 	    return view('index');
 	});
-
+	//User Controller (sing in/sing up/session/index)
 	Route::get('/singuppage', [
 	    'uses' => 'UserController@getPagSingUp',
 		'as' => 'singuppage'
 		//'middleware' => 'auth'
 	]);
-
 	Route::get('/singuppagetienda', [
 	    'uses' => 'UserController@getPagSingUpTienda',
 		'as' => 'singuppagetienda'
 	]);
-
 	Route::post('/singup', [
 		'uses' => 'UserController@singUp',
 		'as' => 'singup'
 	]);
-
 	Route::post('/singin', [
 		'uses' => 'UserController@singIn',
 		'as' => 'singin'
 	]);
-
 	Route::get('/indexpage', [
 	    'uses' => 'UserController@getPagindex',
 		'as' => 'indexpage'
@@ -46,87 +42,101 @@ Route::group(['middleware'=>['web']], function(){
 		'as' => 'pagprincipal'
 		//'middleware' => 'auth'
 	]);
-
-	Route::post('/upload', [
-		'uses' => 'UploadController@upload',
-		'as' => 'upload'
-	]);
-
 	Route::get('/logout', [
 		'uses' => 'UserController@logout',
 		'as' => 'logout'
 	]);
-
+	//Upload fotos
+	Route::post('/upload', [
+		'uses' => 'UploadController@upload',
+		'as' => 'upload'
+	]);
 	Route::get('/uploadperfil', [
 		'uses' => 'UserController@uploadperfil',
 		'as' => 'uploadperfil'
 	]);
-	Route::get('/perfilcliente', [
-		'uses' => 'UserController@perfilcliente',
-		'as' => 'perfilcliente'
+	//Rutas productos
+	Route::get('/gestorproductos', [
+		'uses' => 'ProductoController@gestorproductos',
+		'as' => 'gestorproductos'
 	]);
-	Route::get('/editarperfilcliente', [
-       		'uses' => 'UserController@editarperfilcliente',
-       		'as' => 'editarperfilcliente'
-       	]);
+	Route::get('/nuevoproducto', [
+		'uses' => 'ProductoController@nuevoproducto',
+		'as' => 'nuevoproducto'
+	]);
+	Route::get('/editarproducto/{id}', [
+		'uses' => 'ProductoController@editarproducto',
+		'as' => 'editarproducto'
+	]);
+	Route::post('/insertproducto', [
+		'uses' => 'ProductoController@insert',
+		'as' => 'insertproducto'
+	]);
+	Route::post('/uploadproducto', [
+		'uses' => 'UploadController@uploadproducto',
+		'as' => 'uploadproducto'
+	]);
+	Route::post('/updateproducto', [
+		'uses' => 'ProductoController@update',
+		'as' => 'updateproducto'
+	]);
+	//Rutas Tienda
+	Route::post('/tienda', [
+		'uses' => 'TiendaController@tienda',
+		'as' => 'tienda'
+	]);
 	Route::get('/perfiltienda', [
-    		'uses' => 'UserController@perfiltienda',
+    		'uses' => 'TiendaController@perfiltienda',
     		'as' => 'perfiltienda'
     	]);
-	Route::get('/editarperfiltienda', [
-		'uses' => 'UserController@editarperfiltienda',
-		'as' => 'editarperfiltienda'
+	Route::get('/editperfiltienda', [
+		'uses' => 'TiendaController@editperfiltienda',
+		'as' => 'editperfiltienda'
 	]);
-    Route::get('/gestorproductos', [
-        'uses' => 'ProductoController@gestorproductos',
-        'as' => 'gestorproductos'
+	Route::post('/updatetienda', [
+        'uses' => 'TiendaController@updatetienda',
+        'as' => 'updatetienda'
     ]);
-    Route::get('/nuevoproducto', [
-        'uses' => 'ProductoController@nuevoproducto',
-        'as' => 'nuevoproducto'
-    ]);
-    Route::get('/editarproducto/{id}', [
-        'uses' => 'ProductoController@editarproducto',
-        'as' => 'editarproducto'
-    ]);
-    Route::post('/insertproducto', [
-        'uses' => 'ProductoController@insert',
-        'as' => 'insertproducto'
-    ]);
-    Route::post('/uploadproducto', [
-        'uses' => 'UploadController@uploadproducto',
-        'as' => 'uploadproducto'
-    ]);
-    Route::post('/updateproducto', [
-        'uses' => 'ProductoController@update',
-        'as' => 'updateproducto'
-    ]);
-    Route::post('/tienda', [
-        'uses' => 'TiendaController@tienda',
-        'as' => 'tienda'
-    ]);
-    Route::get('/comprarentienda',[
-        'uses' => 'UserController@comprarentienda',
-        'as' => 'comprarentienda'
-
-    ]);
-    Route::get('/updatecliente', [
-        'uses' => 'UserController@updatecliente',
+	//Rutas Cliente
+    Route::post('/updatecliente', [
+        'uses' => 'ClienteController@updatecliente',
         'as' => 'updatecliente'
     ]);
-
-    Route::get('/updatecliente2', [
-        'uses' => 'UserController@updatecliente2',
+    Route::get('/perfilcliente', [
+		'uses' => 'ClienteController@perfilcliente',
+		'as' => 'perfilcliente'
+	]);
+	Route::get('/editperfilcliente', [
+       		'uses' => 'ClienteController@editperfilcliente',
+       		'as' => 'editperfilcliente'
+       	]);
+    //rutas repartidor
+    Route::get('/gestorrepartidores', [
+    	'uses' => 'RepartidorController@gestorrepartidores',
+    	'as' => 'gestorrepartidores'
+    ]);
+    Route::get('/nuevorepartidor', [
+    	'uses' => 'RepartidorController@nuevorepartidor',
+    	'as' => 'nuevorepartidor'
+    ]);
+    Route::get('/editarrepartidor/{id}', [
+    	'uses' => 'RepartidorController@editarrepartidor',
+    	'as' => 'editarrepartidor'
+    ]);
+    Route::post('/updaterepartidor', [
+    	'uses' => 'RepartidorController@updaterepartidor',
+    	'as' => 'updaterepartidor'
+    ]);
+    Route::delete('/editarrepartidor/{id}',[
+    	'uses' => 'RepartidorController@eliminarrepartidor',
+    	'as' => 'eliminarrepartidor'
+    ]);
+    Route::post('/updatecliente2', [
+        'uses' => 'ClienteController@updatecliente2',
         'as' => 'updatecliente2'
     ]);
-
-
-    Route::get('/seleccionartienda/{id}', [
-        'uses' => 'UserController@seleccionartienda',
-        'as' => 'seleccionartienda'
+    Route::post('/updatetienda2', [
+        'uses' => 'TiendaController@updatetienda2',
+        'as' => 'updatetienda2'
     ]);
-
-    Route::get('/updatetienda',[
-        'uses' => 'UserController@updatetienda',
-        'as' => 'updatetienda']);
 });

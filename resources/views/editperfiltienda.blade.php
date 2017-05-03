@@ -41,22 +41,18 @@
             <form action='{{ route('updatetienda') }}' method='post'>
                 <!--General-->
                 <h4>Datos de usuario</h4>
-                <div class='form-group {{ $errors->has('email') ? 'has-error' : ''}}'>
+            <div class='form-group'>
                     <label for='email'>Email</label>
-                    <input class='form-control' type='text' name='email' id='email' value='{{ Request::old('email') }}'>
-                </div>
-                <div class='form-group {{ $errors->has('password') ? 'has-error' : ''}}'>
-                    <label for='email'>Contraseña</label>
-                    <input class='form-control' type='password' name='password' id='password' value='{{ Request::old('password') }}'>
+                    <input class='form-control' type='text' name='email' id='email' value='{{$tienda->email}}'>
                 </div>
                 <h4>Datos personales</h4>
                 <div class='form-group'>
                     <label for='telefono'>Telefono</label>
-                    <input class='form-control' type='text' name='telefono' id='telefono' value='{{ Request::old('telefono') }}'>
+                    <input class='form-control' type='text' name='telefono' id='telefono' value='{{$tienda->telefono}}'>
                 </div>
                  <div class='form-group'>
                     <label for='nombre'>Nombre</label>
-                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre') }}'>
+                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ $tienda->nombre}}'>
                 </div>
                 <!-- NO TOCAR TOKEN -->
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>

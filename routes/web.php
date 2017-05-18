@@ -139,4 +139,16 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'TiendaController@updatetienda2',
         'as' => 'updatetienda2'
     ]);
+    Route::post('/seleccionartienda/{id}', [
+        'uses' => 'UserController@seleccionartienda',
+        'as' => 'seleccionartienda'
+    ]);
+    Route::post('/valoracionenviar', [
+        'uses' => 'ValoracionController@valoracionenviar',
+        'as' => 'valoracionenviar'
+    ]);
+    Route::post('/valoracion', [
+        'uses' => 'UserController@valoracion',
+        'as' => 'valoracion'
+    ]);
 });

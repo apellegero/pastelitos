@@ -38,7 +38,7 @@
 
    <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
-            <form action='{{ route('updatetienda') }}' method='post'>
+            <form action="{{ route('updatetienda') }}" method='post'>
                 <!--General-->
                 <h4>Datos de usuario</h4>
             <div class='form-group'>

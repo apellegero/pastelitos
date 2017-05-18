@@ -22,29 +22,29 @@
     <div coolspan="2">
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>#</th> <th>Usuario</th> <th>Nombre</th><th>Mail</th> <th>Telefono</th>
-        </tr>
+       
         </thead>
         <tbody>
         @foreach($tiendas as $tienda)
-        <tr>
-            <th scope="row"></th>
 
-            <td><form action="{{route('comprarentienda')}}" method="post" value="info">
-                    <input type="hidden" name="nusuario" value="{{$tienda->nusuario}}">
-                    <input type="hidden" name="email" value="{{$tienda->email}}">
-                    <input type="hidden" name="nombre" value="{{$tienda->nombre}}">
-                    <input type="hidden" name="telefono" value="{{$tienda->telefono}}">
-
-                    <input type='hidden' name='_token' value='{{ Session::token() }}'>
-            <td><a class="btn btn-info" href="seleccionartienda/{{$tienda->id}}" role="button"></a></td>
-
-                </form>
-            </td>
-            <td>{{$tienda->nombre}}</td><td>{{$tienda->email}}</td><td>{{$tienda->telefono}}</td>
+    <div class='row'>
+            <div class="col-sm-3">
+                <img src="../public/uploads/avatars/{{$tienda->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
             </div>
-        </tr>
+            <div class="col-sm-6">
+                <h2 class="featurette-heading">{{$tienda->nombre}}<small style="margin-left: 5px;">{{$tienda->nusuario}}</small></h2>
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <h5>descripcion y direccion</h5>
+            </div>
+            <div class="col-sm3">
+
+                <a class="btn" href="seleccionartienda/{{$tienda->id}}" role="button">Seleccionar tienda</a>
+                <a class="btn" href="{{route('valoracion')}}" role="button">valoracion</a>
+            </div>
+
+
+    </div>
+        <hr class="featurette-divider">
         @endforeach
         </tbody>
     </table>

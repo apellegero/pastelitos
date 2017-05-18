@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -121,14 +123,10 @@ class UserController extends Controller
         $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->where('tienda.id_user', '=', $id)->distinct()->get();
         return view('editperfilcliente',compact('tiendas'));
     }
-    public function uploadperfil(){
-
-        }
-
-    }
     public function principalcliente()
     {
-        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
+        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie', 'users.foto')->get();
+        echo $tiendas;
 
         return view('principalcliente', compact('tiendas'));
     }
@@ -162,5 +160,9 @@ class UserController extends Controller
         $producto = DB::table('cliente')->where('cliente.id', '=', $id)->update(array('users.nombre' => $req['nombre'], 'users.email' => $req['email'], 'users.telefono' => $req['telefono'], 'cliente.apellido' => $req['apellido']));
         echo $producto;
         return redirect()->route('perfilcliente');
+    }
+    public function valoracion(){
+
+        return view('valracion');
     }
 }

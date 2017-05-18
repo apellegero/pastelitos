@@ -20,6 +20,7 @@ class ClienteController extends Controller{
     }
     */
     public function updatecliente(Request $req){
+        echo "hola";
         $id = Auth::user()->id;
         echo $req;
         $producto = DB::table('users')->where('users.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));

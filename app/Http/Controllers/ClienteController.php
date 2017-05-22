@@ -34,4 +34,16 @@ class ClienteController extends Controller{
         $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
         return view('editperfilcliente',compact('clientes'));
     }
+
+    public function mispedidos(){
+        $id = Auth::user()->id;
+        $pedidos = DB::table('users')->join('pedido', 'pedido.id_cliente', '=', 'users.id')->where('pedido.id_cliente', '=', $id)->distinct()->get();
+        $direcciones = DB::table('pedido')->join('direccion', 'pedido.id_direccion', '=', 'direccion.id')->where('pedido.id_cliente', '=', $id)->distinct()->get();
+        $lineas = DB::table('linea_producto')->distinct()->get();
+        $productos = DB::table('producto')->distinct()->get();
+        $tiendas = DB::table('users')->distinct()->get();
+        $estados = DB::table('estado')->distinct()->get();
+        return view('mispedidos', compact(['pedidos','lineas', 'productos', 'estados', 'direcciones', 'tiendas']));
+    }
+
 }

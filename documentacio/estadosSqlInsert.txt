@@ -1,0 +1,14 @@
+// 0 Pendiente
+// 1 Aceptado/pagado
+// 2 En Curso
+// 3 Enviado
+// 4 Entregado
+// 5 Anulado
+// 6 Rechazado
+INSERT INTO estado (nombre, numero_estado) VALUES ('Pendiente', 0);
+INSERT INTO estado (nombre, numero_estado) VALUES ('Aceptado', 1);
+INSERT INTO estado (nombre, numero_estado) VALUES ('En Curso', 2);
+INSERT INTO estado (nombre, numero_estado) VALUES ('Enviado', 3);
+INSERT INTO estado (nombre, numero_estado) VALUES ('Entregado', 4);
+INSERT INTO estado (nombre, numero_estado) VALUES ('Anulado', 5);
+INSERT INTO estado (nombre, numero_estado) VALUES ('Rechazado', 6);

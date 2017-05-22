@@ -35,3 +35,4 @@ Notas:
 En el cas de que el model no estigui creat, el crearem a traves de aquest "comando" desde el cmd:
 php artisan make:model Cliente
 
+En el cas de crear una nova taula: php artisan make:migration create_users_table

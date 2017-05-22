@@ -34,4 +34,10 @@ class RepartidorController extends Controller{
     		DB::table('users')->join('repartidor', 'users.id', '=', 'repartidor.id_user')->where('repartidor.id_user', '=', $id)->delete();
     		return $this->gestorrepartidores();
     	}
+
+        public function entregado($id){
+        DB::table('pedido')->where('pedido.id', '=', $id)->update(array('id_estado' => 5));
+        return redirect()->back();
+    }
+
 }

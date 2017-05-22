@@ -10,6 +10,7 @@ use App\Cliente;
 use App\Tienda;
 use App\Repartidor;
 use App\Direccion;
+use App\Pedido;
 use integer;
 use \Input as Input;
 
@@ -115,10 +116,26 @@ class UserController extends Controller{
                 return view('principalcliente', compact('tiendas'));
             }
             if (Auth::user()->tipo_id == 2) {
-                return view('perfiltienda');
+ 				$id_tienda = DB::table('tienda')->where('tienda.id_user', '=', Auth::user()->id)->value('id_user');
+                $pendientes = DB::table('users')->join('pedido', 'pedido.id_tienda', '=', 'users.id')->where('pedido.id_tienda', '=',$id_tienda)->where('pedido.id_estado', '=', '0')->count();
+                $aceptados = DB::table('users')->join('pedido', 'pedido.id_tienda', '=', 'users.id')->where('pedido.id_tienda', '=',$id_tienda)->where('pedido.id_estado', '=', '1')->count();
+                $encursos = DB::table('users')->join('pedido', 'pedido.id_tienda', '=', 'users.id')->where('pedido.id_tienda', '=',$id_tienda)->where('pedido.id_estado', '=', '2')->count();
+                $enviados = DB::table('users')->join('pedido', 'pedido.id_tienda', '=', 'users.id')->where('pedido.id_tienda', '=',$id_tienda)->where('pedido.id_estado', '=', '3')->count();
+                $pedidos = DB::table('users')->join('pedido', 'pedido.id_tienda', '=', 'users.id')->where('pedido.id_tienda', '=', $id_tienda) ->whereIn('id_estado', [0, 1, 2, 3])->distinct()->get();
+                $direcciones = DB::table('pedido')->join('direccion', 'pedido.id_direccion', '=', 'direccion.id')->where('pedido.id_tienda', '=', $id_tienda)->distinct()->get();
+                $lineas = DB::table('linea_producto')->distinct()->get();
+                $productos = DB::table('producto')->where('id_tienda', '=', $id_tienda)->distinct()->get();
+                $clientes = DB::table('users')->distinct()->get();
+                $estados = DB::table('estado')->distinct()->get();
+                $repartidores = DB::table('users')->join('repartidor', 'repartidor.id_user', '=', 'users.id')->where('repartidor.id_tienda', '=', $id_tienda)->distinct()->get();
+        		return view('principaltienda', compact(['pendientes','aceptados','encursos','enviados','pedidos','lineas', 'productos', 'estados', 'direcciones', 'clientes', 'repartidores']));
             }
             if (Auth::user()->tipo_id == 3) {
-                return view('gestorrepartidores');
+            	$id_repartidor = DB::table('repartidor')->where('repartidor.id_user', '=', Auth::user()->id)->value('repartidor.id');
+                $pedidos = DB::table('repartidor')->join('pedido', 'pedido.id_repartidor', '=', 'repartidor.id')->where('pedido.id_repartidor', '=', $id_repartidor)->whereIn('id_estado', [4])->distinct()->get();
+                $direcciones = DB::table('pedido')->join('direccion', 'pedido.id_direccion', '=', 'direccion.id')->where('pedido.id_repartidor', '=', $id_repartidor)->distinct()->get();
+                $clientes = DB::table('users')->join('cliente', 'cliente.id_user', '=', 'users.id')->distinct()->get();
+                return view('principalrepartidor', compact(['pedidos', 'direcciones', 'clientes']));
             }
         }
         return view('index');
@@ -126,7 +143,6 @@ class UserController extends Controller{
     public function getPagindex(){
         return view('index');
     }
-
 
 	public function uploadperfil(){
     		$this->validate($req, [

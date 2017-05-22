@@ -18,15 +18,13 @@
               <!--Tienda -->
               <a class="btn" href="{{ route('gestorproductos')}}" role="button">productos</a>
               <a class="btn" href="#" role="button">historico pedidos</a>
-              <a class="btn" href="#" role="button">estadisticas</a>
               <a class="btn" href="{{route('gestorrepartidores')}}" role="button">repartidores</a>
               <a class="btn" href="vertienda/{{Auth::user()->id}}" role="button">vista del cliente</a>
               <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil</a>
             @endif
             @if(Auth::user()->tipo_id==1)
               <!--Cliente -->
-              <a class="btn" href="#" role="button">pedidos</a>
-              <a class="btn" href="#" role="button">carrito</a>
+              <a class="btn" href="{{ route('mispedidos')}}"" role="button">mis pedidos</a>
               <a class="btn" href="{{ route('perfilcliente')}}" role="button">perfil cliente</a>
             @endif
             <input type='hidden' name='_token' value='{{ Session::token() }}'>

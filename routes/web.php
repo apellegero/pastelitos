@@ -97,6 +97,10 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'TiendaController@updatetienda',
         'as' => 'updatetienda'
     ]);
+    Route::get('/principaltienda/{estado}', [
+		'uses' => 'TiendaController@cargardatospedidos',
+		'as' => 'cargardatospedidos'
+	]);
 	//Rutas Cliente
     Route::post('/updatecliente', [
         'uses' => 'ClienteController@updatecliente',
@@ -109,6 +113,10 @@ Route::group(['middleware'=>['web']], function(){
 	Route::get('/editperfilcliente', [
        		'uses' => 'ClienteController@editperfilcliente',
        		'as' => 'editperfilcliente'
+       	]);
+	Route::get('/mispedidos', [
+       		'uses' => 'ClienteController@mispedidos',
+       		'as' => 'mispedidos'
        	]);
     //rutas repartidor
     Route::get('/gestorrepartidores', [
@@ -131,9 +139,34 @@ Route::group(['middleware'=>['web']], function(){
     	'uses' => 'RepartidorController@eliminarrepartidor',
     	'as' => 'eliminarrepartidor'
     ]);
+    Route::get('/entregado/{id}', [
+    	'uses' => 'RepartidorController@entregado',
+    	'as' => 'entregado'
+    ]);
     //Compra
     Route::post('/carrito', [
     	'uses' => 'PedidoController@carrito',
     	'as' => 'carrito'
+    ]);
+    Route::post('/pago', [
+    	'uses' => 'PedidoController@pago',
+    	'as' => 'pago'
+    ]);
+    Route::post('/pagar', [
+    	'uses' => 'PedidoController@pagar',
+    	'as' => 'pagar'
+    ]);
+    //pedido
+    Route::post('/updaterepartidorpedido', [
+        'uses' => 'PedidoController@updaterepartidorpedido',
+        'as' => 'updaterepartidorpedido'
+    ]);
+    Route::get('/nextestado/{id}', [
+        'uses' => 'PedidoController@nextestado',
+        'as' => 'nextestado'
+    ]);
+    Route::get('/anular/{id}', [
+        'uses' => 'PedidoController@anular',
+        'as' => 'anular'
     ]);
 });

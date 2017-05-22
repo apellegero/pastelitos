@@ -14,4 +14,7 @@ class Pedido extends Model
     public function tienda(){
     	return $this->belongsto(Tienda::class);
     }
+    public function repartidor(){
+    	return $this->belongsto(Repartidor::class);
+    }
 }

@@ -13,7 +13,7 @@
 		<h4>Datos Basicos:</h4>
 		<ul class="list-unstyled">
   			<li>{{$tienda->nombre}}</li>
-  			<li>Valoración media:</li>
+  			<li>Valoración media:{{$tienda->id}}</li>
   			<li>{{$tienda->calle}}, {{$tienda->numero_calle}}</li>
   			<li>{{$tienda->telefono}}</li>
   			<li>{{$tienda->email}}</li>

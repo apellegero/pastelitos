@@ -22,28 +22,33 @@
     <div coolspan="2">
     <table class="table table-striped">
         <thead>
-       
+
         </thead>
         <tbody>
         @foreach($tiendas as $tienda)
-
-    <div class='row'>
+        <div class='row'>
             <div class="col-sm-3">
                 <img src="../public/uploads/avatars/{{$tienda->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
             </div>
-            <div class="col-sm-6">
-                <h2 class="featurette-heading">{{$tienda->nombre}}<small style="margin-left: 5px;">{{$tienda->nusuario}}</small></h2>
+            <div class="col-sm-3">
+                <h2 class="featurette-heading">{{$tienda->nombre}}</h2>
+                <small style="margin-left: 5px;">{{$tienda->sugerencias}}</small>
+            </div>
+            <div class="col-sm-3">
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>
-                <h5>descripcion y direccion</h5>
+                <small style="margin-left: 5px;">{{$tienda->calle}}</small>
+                <small style="margin-left: 5px;">{{$tienda->numero_calle}}</small>
+                <small style="margin-left: 5px;">{{$tienda->piso}}</small>
             </div>
             <div class="col-sm3">
+                <a class="btn" href="valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
+                <a class="btn" href="vertienda/{{$tienda->id_user}}" role="button">Ver existencias</a>
 
-                <a class="btn" href="seleccionartienda/{{$tienda->id}}" role="button">Seleccionar tienda</a>
-                <a class="btn" href="{{route('valoracion')}}" role="button">valoracion</a>
+
             </div>
 
 
-    </div>
+        </div>
         <hr class="featurette-divider">
         @endforeach
         </tbody>

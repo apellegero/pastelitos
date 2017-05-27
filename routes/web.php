@@ -97,7 +97,15 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'TiendaController@updatetienda',
         'as' => 'updatetienda'
     ]);
+    Route::post('/updatetiendadireccion', [
+        'uses' => 'TiendaController@updatetiendadireccion',
+        'as' => 'updatetiendadireccion'
+    ]);
 	//Rutas Cliente
+    Route::post('/updateclientedireccion', [
+        'uses' => 'ClienteController@updateclientedireccion',
+        'as' => 'updateclientedireccion'
+    ]);
     Route::post('/updatecliente', [
         'uses' => 'ClienteController@updatecliente',
         'as' => 'updatecliente'
@@ -122,6 +130,22 @@ Route::group(['middleware'=>['web']], function(){
     Route::get('/editarrepartidor/{id}', [
     	'uses' => 'RepartidorController@editarrepartidor',
     	'as' => 'editarrepartidor'
+    ]);
+    Route::get('/valoracionpag/{id}', [
+        'uses' => 'ValoracionController@valoracionpag',
+        'as' => 'valoracionpag'
+    ]);
+    Route::post('/valoracionnota', [
+        'uses' => 'ValoracionController@valoracionnota',
+        'as' => 'valoracionnota'
+    ]);
+    Route::get('/valoracionpagpedido/{id}', [
+        'uses' => 'ValoracionController@valoracionpagpedido',
+        'as' => 'valoracionpagpedido'
+    ]);
+    Route::post('/valoracionnotapedido', [
+        'uses' => 'ValoracionController@valoracionnotapedido',
+        'as' => 'valoracionnotapedido'
     ]);
     Route::post('/updaterepartidor', [
     	'uses' => 'RepartidorController@updaterepartidor',

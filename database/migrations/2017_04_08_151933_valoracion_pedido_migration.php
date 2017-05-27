@@ -18,6 +18,7 @@ class ValoracionPedidoMigration extends Migration
             $table->integer('nota');
             $table->text('motivos');
             $table->integer('id_pedido');
+            $table->integer('id_tienda'); //id tienda es el id user de la tienda (no borrar)
             $table->timestamps();
         });
     }

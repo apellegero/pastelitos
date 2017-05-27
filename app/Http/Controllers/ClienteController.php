@@ -20,7 +20,11 @@ class ClienteController extends Controller{
     }
     */
     public function updatecliente(Request $req){
-        echo "hola";
+        $this->validate($req, [
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:4',
+            'telefono' => 'min:9|integer'
+        ]);
         $id = Auth::user()->id;
         echo $req;
         $producto = DB::table('users')->where('users.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));
@@ -30,16 +34,23 @@ class ClienteController extends Controller{
     public function perfilcliente(){
         return view('perfilcliente');
     }
-    public function editperfilcliente()
-    {
-        $id = Auth::user()->id;
-        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
-        return view('editperfilcliente', compact('clientes'));
+    public function editperfilcliente(){
+        $id =  Auth::user()->id;
+        echo $id;
+        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id', '=', $id)->distinct()->get();
+        $direcciones =DB::table('direccion')->join('cliente', 'direccion.id_usuario', '=', 'cliente.id_user')->where('cliente.id', '=', $id)->distinct()->get();
+
+        return view('editperfilcliente',compact(['clientes', 'direcciones']));
     }
-    public function updatecliente2(Request $req){
-        $id = Auth::user()->id;
-        $producto = DB::table('users')->where('users.id', '=', $id)->update(array( 'password' => bcrypt($req['password'])));
+    public function updateclientedireccion(Request $req){
+        $this->validate($req, [
+            'piso' => 'integer',
+            'numero' => 'integer',
+            'cp' => 'integer'
+        ]);
+        $id = $req['id'];
+        echo $req;
+        $producto = DB::table('direccion')->where('direccion.id_usuario', '=', $id)->update(array('sugerencias' => $req['sugerencias'], 'calle' => $req['calle'], 'piso' => $req['piso'], 'numero_calle' => $req['numero'], 'cp' => $req['cp']));
         return redirect()->route('perfilcliente');
     }
-
 }

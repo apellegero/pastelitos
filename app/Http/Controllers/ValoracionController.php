@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,40 +10,61 @@ use App\User;
 use App\Cliente;
 use App\Tienda;
 use App\Producto;
-use integer;
+use App\Valoracion_pedido;
+use App\Pedido;
 use \Input as Input;
+use Image;
 
-class ValoracionController extends Controller{
 
-    public function Valoracion(){
-        return view('valoracion');
-    }
+class ValoracionController extends Controller
+{
+  public function valoracionpag($id){
+            $productos = DB::table('tienda')->where('tienda.id_user', '=', $id)->distinct()->get();
+            echo $productos;
+            return view('valoracion', compact('productos'));
 
-    //Xavi
-    public function valoracionrpagina(){
+      }
+    public function valoracionnota(Request $req){
+    $this->validate($req, [
+    			'nota' => 'required|integer|max:2'
+    		]);
+            		$nota = $req['nota'];
+                    $motiu = $req['motiu'];
+                    $id = $req['id'];
+                    echo $nota;
+                    $valoracion = new Valoracion_pedido();
+                    		$valoracion->nota = $nota;
+                    		$valoracion->motivos = $motiu;
+                    		$valoracion->id_pedido = 9999999999;
+                    		$valoracion->id_tienda = $id;
+                    		$valoracion->save();
+                    $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
+                                    return view('principalcliente', compact('tiendas'));
 
-       return view('valracion');
-    }
-    /*public function updatetienda(Request $req){
-        $id = $req['id'];
-        echo $req;
-        $producto = DB::table('users')->where('users.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));
-        return redirect()->route('perfiltienda');
-    }
-    public function updatetienda2(Request $req){
-        $id = Auth::user()->id;
-        $producto = DB::table('users')->where('users.id', '=', $id)->update(array( 'password' => bcrypt($req['password'])));
-        return redirect()->route('perfiltienda');
-    }
-    /*public function principalcliente(){
-        $tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->select('users.id', 'users.nusuario', 'users.nombre', 'users.email', 'users.telefono', 'tienda.nie')->get();
-		redirect()->back();
-	}
-    public function seleccionartienda($id){
-        $id_tienda = Auth::user()->id;
-        $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->where('tienda.id_user', '=', $id)->distinct()->get();
-        echo $tiendas;
-        return view('tienda', compact('tiendas'));
-    }
-    */
-}
+
+            		}
+            		 public function valoracionpagpedido($id){
+                                $productos = DB::table('pedido')->where('pedido.id_user', '=', $id)->distinct()->get();
+                                echo $productos;
+                                return view('valoracionpedido', compact('productos'));
+
+                          }
+                        public function valoracionnotapedido(Request $req){
+                                		$nota = $req['nota'];
+                                        $motiu = $req['motiu'];
+                                        $id = $req['id'];
+                                        echo $nota;
+                                        $valoracion = new Valoracion_pedido();
+                                        		$valoracion->nota = $nota;
+                                        		$valoracion->motivos = $motiu;
+                                        		$valoracion->id_pedido = $id;
+                                        		$valoracion->id_tienda = 9999999999;
+                                        		$valoracion->save();
+                                        $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
+                                                        return view('principalcliente', compact('tiendas'));
+
+
+                                		}
+
+
+  }

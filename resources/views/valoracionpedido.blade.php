@@ -23,10 +23,10 @@ Sing up
     <div class='col-md-6 col-md-offset-3'>
         <div class="input-group">
 
-            <form action="{{route('valoracionnota')}}" method='post'>
-                <input type='hidden' id="id" name="id" value='{{$producto->id }}'>
-                <input type="text" class="form-control" name="nota" id="nota">
-                <input type="text" class="form-control" name="motiu" id="motiu">
+            <form action="{{route('valoracionnotapedido')}}" method='post'>
+                <input type='hidden' id="id" name="id" value='{{$producto->id }}' required>
+                <input type="text" class="form-control" name="nota" id="nota" required>
+                comentario: <input type="text" class="form-control" name="motiu" id="motiu">
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>
                 <button type='submit' class='btn btn-info'>aceptar</button>
         </div>

@@ -19,10 +19,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-8">
               <h2 class="featurette-heading">Variedad. <span class="text-muted">It'll blow your mind.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              <p class="lead">Un pastel? Un postre? Solo una merienda? No importa, aquí encontraras todo lo que desees. Dulce o salado.</p>
             </div>
             <div class="col-md-2" style="text-align: center;">
-                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTczIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MyAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTViNjM4M2I1MGYgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWI2MzgzYjUwZiI+PHJlY3Qgd2lkdGg9IjE3MyIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC41NjI1IiB5PSI5NC40NDM3NSI+MTczeDE4MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="../resources/img/gran-variedad-de-pasteles.jpg" data-holder-rendered="true">
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -31,10 +31,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-8 col-md-push-3">
               <h2 class="featurette-heading">disponibilidad. <span class="text-muted">See for yourself.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              <p class="lead">Con total seguridad la tienda a la cual compras, llegara a tu casa en las próximas horas. Miles de usuarios nos avalan.</p>
             </div>
             <div class="col-md-2 col-md-pull-8" style="text-align: center;">
-                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTczIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MyAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTViNjM4M2I1MGYgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWI2MzgzYjUwZiI+PHJlY3Qgd2lkdGg9IjE3MyIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC41NjI1IiB5PSI5NC40NDM3NSI+MTczeDE4MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="../resources/img/repartidorindex.jpg" data-holder-rendered="true">
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -43,10 +43,10 @@
             <div class="col-md-1"></div>
             <div class="col-md-8">
               <h2 class="featurette-heading">Conoce que comes <span class="text-muted">ingredientes.</span></h2>
-              <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              <p class="lead">Nuestras pastelerías disfrutan de enorgullecerse a ellas mismas al poder decir que disfrutan de los ingredientes más frescos que puedan conseguir.</p>
             </div>
             <div class="col-md-2" style="text-align: center;">
-                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTczIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MyAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzEwMCV4MTgwCkNyZWF0ZWQgd2l0aCBIb2xkZXIuanMgMi42LjAuCkxlYXJuIG1vcmUgYXQgaHR0cDovL2hvbGRlcmpzLmNvbQooYykgMjAxMi0yMDE1IEl2YW4gTWFsb3BpbnNreSAtIGh0dHA6Ly9pbXNreS5jbwotLT48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwhW0NEQVRBWyNob2xkZXJfMTViNjM4M2I1MGYgdGV4dCB7IGZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0IH0gXV0+PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImhvbGRlcl8xNWI2MzgzYjUwZiI+PHJlY3Qgd2lkdGg9IjE3MyIgaGVpZ2h0PSIxODAiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSI2MC41NjI1IiB5PSI5NC40NDM3NSI+MTczeDE4MDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                <img alt="100%x180" data-src="holder.js/100%x180" style="height: 180px; width: 180px; display: initial;" src="../resources/img/ingredientes-pasteleria.jpg" data-holder-rendered="true">
             </div>
             <div class="col-md-1"></div>
         </div>

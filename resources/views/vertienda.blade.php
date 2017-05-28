@@ -21,10 +21,7 @@
 		<p>{{$tienda->sugerencias}}</p>
 	</div>
 	<div class="col-md-6">
-		<h2>Carrito</h2>
-		<ul>
-		  <li>producto....cantidad...precio</li>
-		</ul>
+		
 	</div>
 </div>
 <!-- Producto -->
@@ -57,7 +54,7 @@
 	        <td>{{$producto->stock}}</th>
 	        <td>
 	        	@if(Auth::user()->tipo_id==1)
-	        	<input type="number" name="prod{{$producto->id}}" min="0" value="0">
+	        	<input type="number" name="prod{{$producto->id}}" min="0" max="{{$producto->stock}}" value="0">
 	        	@endif
 	        </th>
 	    </tr>

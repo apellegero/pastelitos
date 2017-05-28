@@ -17,7 +17,7 @@
              @if(Auth::user()->tipo_id==2)
               <!--Tienda -->
               <a class="btn" href="{{ route('gestorproductos')}}" role="button">productos</a>
-              <a class="btn" href="#" role="button">historico pedidos</a>
+              <!-- <a class="btn" href="#" role="button">historico pedidos</a> -->
               <a class="btn" href="{{route('gestorrepartidores')}}" role="button">repartidores</a>
               <a class="btn" href="vertienda/{{Auth::user()->id}}" role="button">vista del cliente</a>
               <a class="btn" href="{{ route('perfiltienda')}}" role="button">perfil</a>

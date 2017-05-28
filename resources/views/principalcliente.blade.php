@@ -41,7 +41,7 @@
                 <small style="margin-left: 5px;">{{$tienda->piso}}</small>
             </div>
             <div class="col-sm3">
-                <a class="btn" href="valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
+
                 <a class="btn" href="vertienda/{{$tienda->id_user}}" role="button">Ver existencias</a>
 
 

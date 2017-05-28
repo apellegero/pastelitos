@@ -23,7 +23,7 @@ class DireccionMigration extends Migration
             $table->string('calle');
             $table->integer('numero_calle');
             $table->string('piso');
-            $table->text('sugerencias')->default(' ');
+            $table->text('sugerencias');
             $table->timestamps();
         });
     }

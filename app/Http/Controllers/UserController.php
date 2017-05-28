@@ -11,8 +11,6 @@ use App\Tienda;
 use App\Repartidor;
 use App\Direccion;
 use App\Pedido;
-use App\Repartidor;
-use App\Direccion;
 use integer;
 use \Input as Input;
 
@@ -115,7 +113,7 @@ class UserController extends Controller{
 		//por tipo de usuario
 		if(Auth::check()){
 			if(Auth::user()->tipo_id==1){
-				$tiendas = DB::table('users')->join('tienda', 'users.id', '=', 'tienda.id_user')->distinct()->get();
+                $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
                 return view('principalcliente', compact('tiendas'));
             }
             if (Auth::user()->tipo_id == 2) {
@@ -147,34 +145,31 @@ class UserController extends Controller{
         return view('index');
     }
 
-	public function uploadperfil(){
+	public function uploadperfil(Request $req){
     		$this->validate($req, [
     			'email' => 'required|email|unique:users',
     			'nusuario' => 'required|unique:users',
     			'password' => 'required|min:4'
+            ]);
                 $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
                $avg = DB::table('valoracion_pedido')
                     ->where('valoracion_pedido.id_tienda', '=', '$id')
                     ->avg('nota');
 
                 return view('principalcliente', compact(['tiendas', 'avg']));
-            }
+
             if (Auth::user()->tipo_id == 2) {
                 return view('perfiltienda');
             }
             if (Auth::user()->tipo_id == 3) {
                 return view('gestorrepartidores');
             }
-        }
-        return view('index');
-    }
-    public function getPagindex(){
-        return view('index');
-    }
 
-    		]);
+        return view('index');
+    }
+    	/*	]);
     		redirect()->back();
     }
-
+*/
 
 }

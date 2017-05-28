@@ -136,7 +136,10 @@
 							<!-- Si estado es 5 valoracion -->
 						@endif
 					@endif
-				@endforeach 	
+
+				@endforeach
+
+                    <a class="btn" href="valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
 		        </div>
 		 </div>
 		 </td>

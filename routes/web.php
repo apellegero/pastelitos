@@ -169,7 +169,6 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'PedidoController@anular',
         'as' => 'anular'
     ]);
-	]);
 	//Rutas Tienda
 	Route::post('/tienda', [
 		'uses' => 'TiendaController@tienda',

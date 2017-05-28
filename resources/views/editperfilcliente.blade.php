@@ -37,36 +37,64 @@ editar cliente
 @foreach($clientes as $cliente)
 <div class='row'>
     <div class='col-md-6 col-md-offset-3'>
-
-        <form action="{{route('updatecliente')}}" method='post'>
+        <form action="{{ route('updatecliente') }}" method='post'>
             <input type="hidden" name="id" value="{{$cliente->id}}">
             <!--General-->
             <h4>Datos de usuario</h4>
             <div class='form-group'>
                 <label for='email'>Email</label>
-                <input class='form-control' type='text' name='email' id='email' value='{{$cliente->email}}'>
+                <input class='form-control' type='text' name='email' id='email' value='{{$cliente->email}}' required>
             </div>
-
             <h4>Datos personales</h4>
             <div class='form-group'>
                 <label for='telefono'>Telefono</label>
-                <input class='form-control' type='text' name='telefono' id='telefono'  value='{{$cliente->telefono}}'>
+                <input class='form-control' type='text' name='telefono' id='telefono' value='{{$cliente->telefono}}' required>
             </div>
             <div class='form-group'>
                 <label for='nombre'>Nombre</label>
-                <input class='form-control' type='text' name='nombre' id='nombre'  value='{{$cliente->nombre}}'>
+                <input class='form-control' type='text' name='nombre' id='nombre' value='{{$cliente->nombre}}' required>
             </div>
             <!-- NO TOCAR TOKEN -->
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
             <!--Cliente-->
 
+
+            <button type='submit' class='btn btn-info'>update</button>
+        </form>
+        @endforeach
+        <hr class="featurette-divider">
+        @foreach($direcciones as $direccion)
+        <form action="{{ route('updateclientedireccion') }}" method='post'>
+            <input type="hidden" name="id" value="{{$cliente->id_user}}">
+            <!--General-->
             <div class='form-group'>
-                <label for='apellido'>Apellido</label>
-                <input class='form-control' type='text' name='apellido' id='apellido'  value='{{$cliente->apellido}}'>
+                <label for='email'>Sugerencias</label>
+                <input class='form-control' type='text' name='sugerencias' id='sugerencias' value='{{$direccion->sugerencias}}' required>
             </div>
+            <h4>Direccion del usuario</h4>
+            <div class='form-group'>
+                <label for='email'>Calle</label>
+                <input class='form-control' type='text' name='calle' id='calle' value='{{$direccion->calle}}' required>
+            </div>
+
+            <div class='form-group'>
+                <label for='telefono'>Numero puerta</label>
+                <input class='form-control' type='text' name='numero' id='numero' value='{{$direccion->numero_calle}}' required>
+            </div>
+            <div class='form-group'>
+                <label for='nombre'>Piso</label>
+                <input class='form-control' type='text' name='piso' id='piso' value='{{$direccion->piso}}' required>
+            </div>
+            <!-- NO TOCAR TOKEN -->
             <input type='hidden' name='_token' value='{{ Session::token() }}'>
-            <button type='submit' class='btn btn-info'>Editar</button>
-            <hr class="featurette-divider">
+            <!--Cliente-->
+            <div class='form-group'>
+                <label for='email'>cp</label>
+                <input class='form-control' type='text' name='cp' id='cp' value='{{$direccion->cp}}' required>
+            </div>
+
+            <button type='submit' class='btn btn-info'>update</button>
+        </form>
     </div>
     @endforeach
 </div>

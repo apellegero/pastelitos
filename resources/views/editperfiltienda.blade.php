@@ -43,16 +43,16 @@
                 <h4>Datos de usuario</h4>
                 <div class='form-group'>
                     <label for='email'>Email</label>
-                    <input class='form-control' type='text' name='email' id='email' value='{{$tienda->email}}'>
+                    <input class='form-control' type='text' name='email' id='email' value='{{$tienda->email}}' required>
                 </div>
                 <h4>Datos personales</h4>
                 <div class='form-group'>
                     <label for='telefono'>Telefono</label>
-                    <input class='form-control' type='text' name='telefono' id='telefono' value='{{$tienda->telefono}}'>
+                    <input class='form-control' type='text' name='telefono' id='telefono' value='{{$tienda->telefono}}' required>
                 </div>
                  <div class='form-group'>
                     <label for='nombre'>Nombre</label>
-                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{$tienda->nombre}}'>
+                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{$tienda->nombre}}' required>
                 </div>
                 <!-- NO TOCAR TOKEN -->
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>
@@ -61,8 +61,41 @@
                 
                 <button type='submit' class='btn btn-info'>update</button>
             </form>
+            @endforeach
             <hr class="featurette-divider">
+            @foreach($direcciones as $direccion)
+            <form action="{{ route('updatetiendadireccion') }}" method='post'>
+                <input type="hidden" name="id" value="{{$tienda->id_user}}">
+                <!--General-->
+                <div class='form-group'>
+                    <label for='email'>Sugerencias</label>
+                    <input class='form-control' type='text' name='sugerencias' id='sugerencias' value='{{$direccion->sugerencias}}' required>
+                </div>
+                <h4>Direccion del usuario</h4>
+                <div class='form-group'>
+                    <label for='email'>Calle</label>
+                    <input class='form-control' type='text' name='calle' id='calle' value='{{$direccion->calle}}' required>
+                </div>
+
+                <div class='form-group'>
+                    <label for='telefono'>Numero puerta</label>
+                    <input class='form-control' type='text' name='numero' id='numero' value='{{$direccion->numero_calle}}' required>
+                </div>
+                <div class='form-group'>
+                    <label for='nombre'>Piso</label>
+                    <input class='form-control' type='text' name='piso' id='piso' value='{{$direccion->piso}}' required>
+                </div>
+                <!-- NO TOCAR TOKEN -->
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <!--Cliente-->
+                <div class='form-group'>
+                    <label for='email'>cp</label>
+                    <input class='form-control' type='text' name='cp' id='cp' value='{{$direccion->cp}}' required>
+                </div>
+
+                <button type='submit' class='btn btn-info'>update</button>
+            </form>
         </div>
-@endforeach
+       @endforeach
     </div>
 @endsection

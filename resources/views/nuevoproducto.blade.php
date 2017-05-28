@@ -25,7 +25,7 @@
                 <h4>Nuevo producto</h4>
                 <div class='form-group'>
                     <label for='nombre'>Nombre</label>
-                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre') }}'>
+                    <input class='form-control' type='text' name='nombre' id='nombre' value='{{ Request::old('nombre')}}' required>
                 </div>
                 <!--
                 <label style="margin: 0px 5px;">Categoria:</label>
@@ -36,18 +36,18 @@
                 -->
                 <div class='form-group'>
                     <label>Descripción</label>
-                    <textarea class="form-control" rows="5" name='descripcion' id='descripcion' value='{{ Request::old('descripcion') }}'></textarea>
+                    <textarea class="form-control" rows="5" name='descripcion' id='descripcion' value='{{ Request::old('descripcion') }}' required></textarea>
                 </div>
                 <div class='form-group'>
                     <label for='precio'>Precio</label>
                     <div class="input-group">
-                    <input type="text" class="form-control" name="precio" id="precio" value='{{ Request::old('precio') }}'>
+                    <input type="text" class="form-control" name="precio" id="precio" value='{{ Request::old('precio') }}' required>
                     <div class="input-group-addon">€</div>
                     </div>
                 </div>
                 <div class='form-group'>
                     <label for='stock'>Stock</label>
-                    <input class='form-control' type='text' name='stock' id='stock' value='{{ Request::old('stock') }}'>
+                    <input class='form-control' type='text' name='stock' id='stock' value='{{ Request::old('stock') }}' required>
                 </div>
                 <input type='hidden' name='_token' value='{{ Session::token() }}'>
                 <button type='submit' class='btn btn-info'>Crear</button>

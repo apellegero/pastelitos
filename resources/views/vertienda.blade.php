@@ -21,7 +21,7 @@
 		<p>{{$tienda->sugerencias}}</p>
 	</div>
 	<div class="col-md-6">
-		
+
 	</div>
 </div>
 <!-- Producto -->

@@ -22,24 +22,34 @@
     <div coolspan="2">
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>#</th> <th>Foto</th> <th>Nombre</th><th>Mail</th> <th>Telefono</th>
-        </tr>
+
         </thead>
         <tbody>
         @foreach($tiendas as $tienda)
-        <tr>
-            <th scope="row"></th>
-            <td>
-            <img src="uploads/avatars/{{$tienda->foto}}" style="width: 50px; height: 50px;float: left; margin-right: 25px;">
-            </td>
-            <td>
-                <a class="btn btn-link" href="vertienda/{{$tienda->id_user}}" role="button">{{$tienda->nombre}}</a>
-            </td>
-            <td>{{$tienda->email}}</td>
-            <td>{{$tienda->telefono}}</td>
+        <div class='row'>
+            <div class="col-sm-3">
+                <img src="../public/uploads/avatars/{{$tienda->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
             </div>
-        </tr>
+            <div class="col-sm-3">
+                <h2 class="featurette-heading">{{$tienda->nombre}}</h2>
+                <small style="margin-left: 5px;">{{$tienda->sugerencias}}</small>
+            </div>
+            <div class="col-sm-3">
+                <input type='hidden' name='_token' value='{{ Session::token() }}'>
+                <small style="margin-left: 5px;">{{$tienda->calle}}</small>
+                <small style="margin-left: 5px;">{{$tienda->numero_calle}}</small>
+                <small style="margin-left: 5px;">{{$tienda->piso}}</small>
+            </div>
+            <div class="col-sm3">
+                <a class="btn" href="valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
+                <a class="btn" href="vertienda/{{$tienda->id_user}}" role="button">Ver existencias</a>
+
+
+            </div>
+
+
+        </div>
+        <hr class="featurette-divider">
         @endforeach
         </tbody>
     </table>

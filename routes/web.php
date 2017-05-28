@@ -169,4 +169,100 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'PedidoController@anular',
         'as' => 'anular'
     ]);
+	]);
+	//Rutas Tienda
+	Route::post('/tienda', [
+		'uses' => 'TiendaController@tienda',
+		'as' => 'tienda'
+	]);
+	Route::get('/perfiltienda', [
+    		'uses' => 'TiendaController@perfiltienda',
+    		'as' => 'perfiltienda'
+    	]);
+	Route::get('/editperfiltienda', [
+		'uses' => 'TiendaController@editperfiltienda',
+		'as' => 'editperfiltienda'
+	]);
+	Route::post('/updatetienda', [
+        'uses' => 'TiendaController@updatetienda',
+        'as' => 'updatetienda'
+    ]);
+    Route::post('/updatetiendadireccion', [
+        'uses' => 'TiendaController@updatetiendadireccion',
+        'as' => 'updatetiendadireccion'
+    ]);
+	//Rutas Cliente
+    Route::post('/updateclientedireccion', [
+        'uses' => 'ClienteController@updateclientedireccion',
+        'as' => 'updateclientedireccion'
+    ]);
+    Route::post('/updatecliente', [
+        'uses' => 'ClienteController@updatecliente',
+        'as' => 'updatecliente'
+    ]);
+    Route::get('/perfilcliente', [
+		'uses' => 'ClienteController@perfilcliente',
+		'as' => 'perfilcliente'
+	]);
+	Route::get('/editperfilcliente', [
+       		'uses' => 'ClienteController@editperfilcliente',
+       		'as' => 'editperfilcliente'
+       	]);
+    //rutas repartidor
+    Route::get('/gestorrepartidores', [
+    	'uses' => 'RepartidorController@gestorrepartidores',
+    	'as' => 'gestorrepartidores'
+    ]);
+    Route::get('/nuevorepartidor', [
+    	'uses' => 'RepartidorController@nuevorepartidor',
+    	'as' => 'nuevorepartidor'
+    ]);
+    Route::get('/editarrepartidor/{id}', [
+    	'uses' => 'RepartidorController@editarrepartidor',
+    	'as' => 'editarrepartidor'
+    ]);
+    Route::get('/valoracionpag/{id}', [
+        'uses' => 'ValoracionController@valoracionpag',
+        'as' => 'valoracionpag'
+    ]);
+    Route::post('/valoracionnota', [
+        'uses' => 'ValoracionController@valoracionnota',
+        'as' => 'valoracionnota'
+    ]);
+    Route::get('/valoracionpagpedido/{id}', [
+        'uses' => 'ValoracionController@valoracionpagpedido',
+        'as' => 'valoracionpagpedido'
+    ]);
+    Route::post('/valoracionnotapedido', [
+        'uses' => 'ValoracionController@valoracionnotapedido',
+        'as' => 'valoracionnotapedido'
+    ]);
+    Route::post('/updaterepartidor', [
+    	'uses' => 'RepartidorController@updaterepartidor',
+    	'as' => 'updaterepartidor'
+    ]);
+    Route::delete('/editarrepartidor/{id}',[
+    	'uses' => 'RepartidorController@eliminarrepartidor',
+    	'as' => 'eliminarrepartidor'
+    ]);
+    Route::post('/updatecliente2', [
+        'uses' => 'ClienteController@updatecliente2',
+        'as' => 'updatecliente2'
+    ]);
+    Route::post('/updatetienda2', [
+        'uses' => 'TiendaController@updatetienda2',
+        'as' => 'updatetienda2'
+    ]);
+    Route::post('/seleccionartienda/{id}', [
+        'uses' => 'UserController@seleccionartienda',
+        'as' => 'seleccionartienda'
+    ]);
+    Route::post('/valoracionenviar', [
+        'uses' => 'ValoracionController@valoracionenviar',
+        'as' => 'valoracionenviar'
+    ]);
+    Route::post('/valoracion', [
+        'uses' => 'UserController@valoracion',
+        'as' => 'valoracion'
+    ]);
 });

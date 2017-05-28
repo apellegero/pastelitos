@@ -11,6 +11,8 @@ use App\Tienda;
 use App\Repartidor;
 use App\Direccion;
 use App\Pedido;
+use App\Repartidor;
+use App\Direccion;
 use integer;
 use \Input as Input;
 
@@ -21,7 +23,8 @@ class UserController extends Controller{
 		$this->validate($req, [
 			'email' => 'required|email|unique:users',
 			'nusuario' => 'required|unique:users',
-			'password' => 'required|min:4'
+			'password' => 'required|min:4',
+            'telefono' => 'min:9|integer'
 		]);
 		//Recollim les dades directament del formulari
 		$email = $req['email'];
@@ -149,8 +152,29 @@ class UserController extends Controller{
     			'email' => 'required|email|unique:users',
     			'nusuario' => 'required|unique:users',
     			'password' => 'required|min:4'
+                $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
+               $avg = DB::table('valoracion_pedido')
+                    ->where('valoracion_pedido.id_tienda', '=', '$id')
+                    ->avg('nota');
+
+                return view('principalcliente', compact(['tiendas', 'avg']));
+            }
+            if (Auth::user()->tipo_id == 2) {
+                return view('perfiltienda');
+            }
+            if (Auth::user()->tipo_id == 3) {
+                return view('gestorrepartidores');
+            }
+        }
+        return view('index');
+    }
+    public function getPagindex(){
+        return view('index');
+    }
 
     		]);
     		redirect()->back();
     }
+
+
 }

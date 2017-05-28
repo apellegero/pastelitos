@@ -45,7 +45,8 @@
 		<td>
 		<div class="row">
 		        <div class="col-lg-3">
-		          <h2 style="margin-top: 0px;">Pedido: {{$pedido->id}}</h2>
+		          <h4 style="margin-top: 0px;">Numero de pedido: {{$pedido->id}}</h4>
+		          <div style="border-bottom-style: solid; border-bottom-color: lightgrey; border-bottom-width: 1px;">
 			        <ol>
 			         	@foreach($lineas as $linea)
 				         	@foreach($productos as $producto)
@@ -57,16 +58,17 @@
 				         	@endforeach
 			         	@endforeach 
 			        </ol>
-			      <dl class="dl-horizontal">
+			        </div>
+			      <dl class="dl-horizontal" style="margin-top: 5px;">
 					  <dt style="width: initial;">Precio total:</dt>
-					  <dd style="margin-left: 140px;">{{$pedido->precio_total}}€</dd>
+					  <dd style="margin-left: 100px;">{{$pedido->precio_total}}€</dd>
 		          </dl>
 		        </div>
 		        <div class="col-lg-4">
 		        <dl class="dl-horizontal">
 		        	@foreach($clientes as $cliente)
 						@if($cliente->id == $pedido->id_cliente)
-						  <dt style="width: initial;">Nombre usuario:</dt>
+						  <dt style="width: initial;">Usuario:</dt>
 						  <dd style="margin-left: 140px;">{{$cliente->nusuario}}</dd>
 						  <dt style="width: initial;">Nombre cliente:</dt>
 						  <dd style="margin-left: 140px;">{{$cliente->nombre}}</dd>
@@ -113,17 +115,19 @@
 								@endif
 							@endforeach
 						</select>
-						<button type='submit' class='btn btn-info'>Guardar</button>
+						<button type='submit' class='btn btn-default'>Guardar</button>
 				</form>
+				<div style="margin-top: 80px;">
 				@foreach($estados as $estado)
 					@if($pedido->id_estado == $estado->numero_estado)
-						<h4>Estado Actual: {{$estado->nombre}}</h4>	
+						<h4><b>Estado:</b> {{$estado->nombre}}</h4>	
 						<!-- Texto de cada estado
 						<p>Si selecionas seguiente estado el pedido pasara a finalizado: El pedido esta listo y enviado.</p>
 						-->
 					@endif
 				@endforeach 	
-		          <p><a class="btn btn-info" href="nextestado/{{$pedido->id}}" role="button">Suiguiente estado</a><a class="btn btn-danger" href="anular/{{$pedido->id}}" role="button" style="margin-left: 20px;">Anular</a></p>
+		          <p><a class="btn btn-default" href="nextestado/{{$pedido->id}}" role="button">Suiguiente estado</a><a class="btn btn-danger" href="anular/{{$pedido->id}}" role="button" style="margin-left: 20px;">Anular</a></p>
+		          </div>
 		        </div>
 		 </div>
 		 </td>

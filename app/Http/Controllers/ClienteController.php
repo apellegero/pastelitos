@@ -21,14 +21,13 @@ class ClienteController extends Controller{
     */
     public function updatecliente(Request $req){
         $this->validate($req, [
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:4',
+            'email' => 'required|email',
             'telefono' => 'min:9|integer'
         ]);
         $id = Auth::user()->id;
-        echo $req;
+
         $producto = DB::table('users')->where('users.id', '=', $id)->update(array('nombre' => $req['nombre'], 'email' => $req['email'], 'telefono' => $req['telefono']));
-        echo $producto;
+
         return redirect()->route('perfilcliente');
     }
     public function perfilcliente(){
@@ -36,8 +35,9 @@ class ClienteController extends Controller{
     }
     public function editperfilcliente(){
         $id =  Auth::user()->id;
-        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id', '=', $id)->distinct()->get();
-        $direcciones =DB::table('direccion')->join('cliente', 'direccion.id_usuario', '=', 'cliente.id_user')->where('cliente.id', '=', $id)->distinct()->get();
+
+        $clientes = DB::table('users')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
+        $direcciones =DB::table('direccion')->join('cliente', 'direccion.id_usuario', '=', 'cliente.id_user')->where('cliente.id_user', '=', $id)->distinct()->get();
 
         return view('editperfilcliente',compact(['clientes', 'direcciones']));
     }
@@ -48,7 +48,7 @@ class ClienteController extends Controller{
             'cp' => 'integer'
         ]);
         $id = $req['id'];
-        echo $req;
+
         $producto = DB::table('direccion')->where('direccion.id_usuario', '=', $id)->update(array('sugerencias' => $req['sugerencias'], 'calle' => $req['calle'], 'piso' => $req['piso'], 'numero_calle' => $req['numero'], 'cp' => $req['cp']));
         return redirect()->route('perfilcliente');
     }

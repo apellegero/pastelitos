@@ -19,14 +19,29 @@
         </div>
     </div>
 @endif
-    <div class='row'>
-        <div class='col-md-10 col-md-offset-1'>
-            <div class='form-group'>
-                <img src="uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
-                <h2 class="featurette-heading">{{Auth::user()->nombre}}<small style="margin-left: 5px;">{{Auth::user()->nusuario}}</small></h2>
-                <a class="btn" href="{{ route('editperfiltienda')}}" role="button">editar perfil tienda</a>
-            </div>
-        </div>
+<div class='row'>
+    <div class="col-sm-3">
+        <img src="../public/uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
     </div>
+    <div class="col-sm-3">
+        <h2 class="featurette-heading">{{Auth::user()->nombre}}</h2>
+        <small style="margin-left: 5px;">{{Auth::user()->nusuario}}</small>
+    </div>
+    <div class="col-sm-3">
+        <input type='hidden' name='_token' value='{{ Session::token() }}'>
+
+        <h4 style="margin-top: 10px; margin-left: 5px;">Telefono: {{Auth::user()->telefono}}</h4>
+        <h4 style="margin-top: 10px; margin-left: 5px;">Email: {{Auth::user()->email}}</h4>
+
+    </div>
+    <div class="col-sm3">
+
+        <a class="btn" href="{{ route('editperfiltienda')}}" role="button">Editar perfil</a>
+
+
+    </div>
+
+
+</div>
     <hr class="featurette-divider">
 @endsection

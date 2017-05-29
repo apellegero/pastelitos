@@ -51,8 +51,7 @@ class TiendaController extends Controller{
     }
     public function updatetienda(Request $req){
         $this->validate($req, [
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:4',
+            'email' => 'required|email',
             'telefono' => 'min:9|integer'
         ]);
         $id = $req['id'];

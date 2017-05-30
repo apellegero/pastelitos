@@ -18,7 +18,9 @@
         </div>
     </div>
 @endif
+
     <div class='row'>
+        <body style='background-color:#E5FDF8'>
         <div class='col-md-6 col-md-offset-3'>
             <form action='{{ route('singup') }}' method='post'>
                 <!--General-->
@@ -74,7 +76,7 @@
                 </div>
                 <div class='form-group'>
                     <label>Sugerencias</label>
-                    <textarea class="form-control" rows="5" name='sugerencias' id='sugerencias' placeholder="Aquí puede dar alguna instruccion para cuando el repartidor le traiga uno de los pedidos." value='{{ Request::old('sugerencias') }}'></textarea>
+                    <textarea class="form-control" rows="5" name='sugerencias' id='sugerencias' placeholder="Aquí puede dar alguna instruccion para cuando el repartidor le traiga uno de los pedidos." value='{{ Request::old('sugerencias') }}' required></textarea>
                 </div>
                 <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>

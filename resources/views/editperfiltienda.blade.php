@@ -37,6 +37,7 @@
 @foreach($tiendas as $tienda)
    <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
+            <body style='background-color:#E5FDF8'>
             <form action="{{ route('updatetienda') }}" method='post'>
                 <input type="hidden" name="id" value="{{$tienda->id}}">
                 <!--General-->

@@ -6,6 +6,7 @@
 
 @section('content')
 <div class="row">
+    <body style='background-color:#E5FDF8'>
 	<div class="col-md-6">
 		<h4>Botiga</h4>
 		<img src="uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">

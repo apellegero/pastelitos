@@ -37,6 +37,7 @@ editar cliente
 @foreach($clientes as $cliente)
 <div class='row'>
     <div class='col-md-6 col-md-offset-3'>
+        <body style='background-color:#E5FDF8'>
         <form action="{{ route('updatecliente') }}" method='post'>
             <input type="hidden" name="id" value="{{$cliente->id}}">
             <!--General-->

@@ -40,6 +40,7 @@
 </div>
 <table class="table table-striped" style="margin-top: 10px;">
 	<tbody>
+    <body style='background-color:#E5FDF8'>
 		@foreach($pedidos as $pedido)
 		<tr>
 		<td>

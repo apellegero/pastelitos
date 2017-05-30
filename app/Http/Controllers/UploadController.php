@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\View\FileViewFinder;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
@@ -19,16 +20,14 @@ class UploadController extends Controller{
 			$foto = $request->file('foto');
 			$filename = time().'.'.$foto->getClientOriginalExtension();
 			Image::make($foto)->resize(300, 300)->save(public_path('uploads/avatars/' .$filename));
-
 			$user = Auth::user();
 			$user->foto = $filename;
 			$user->save();
-
 			if(isset($request['from'])){
 				return view($request['from']);
 			}
 			else{
-				return view('/');
+                return Redirect::back(); // al poner aqui una / peta
 			}
 		}
 	}

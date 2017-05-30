@@ -19,6 +19,7 @@
     </div>
 @endif
 <table class="table table-striped">
+    <body style='background-color:#E5FDF8'>
     <thead>
         <tr> 
             <th>#</th> <th>Foto</th> <th>Nombre</th> <th>Descripción</th> <th>Precio</th> <th>Stock</th> <th>Accion</th>

@@ -6,6 +6,7 @@
 
 @section('content')
 <div class='container' style="max-width: 730px;">
+    <body style='background-color:#E5FDF8'>
 	<table class="table table-striped">
 	    <thead>
 	        <tr> 

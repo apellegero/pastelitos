@@ -21,6 +21,7 @@
  @foreach($repartidores as $repartidor)
   <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
+            <body style='background-color:#E5FDF8'>
             <form action='{{ route('updaterepartidor') }}' method='post'>
                 <input type="hidden" name="id" value="{{$repartidor->id}}" required>
                 <h3>Editar Repartidor</h3>

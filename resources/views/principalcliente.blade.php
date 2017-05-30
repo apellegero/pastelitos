@@ -24,7 +24,8 @@
         <thead>
 
         </thead>
-        <tbody>
+        <tbody style="bgcolor='#E5FDF8'">
+        <body style='background-color:#E5FDF8'>
         @foreach($tiendas as $tienda)
         <div class='row'>
             <div class="col-sm-2">

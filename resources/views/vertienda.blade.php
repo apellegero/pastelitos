@@ -8,6 +8,7 @@
 @foreach($tiendas as $tienda)
 <div class="row">
 	<div class="col-md-6">
+        <body style='background-color:#E5FDF8'>
 		<h2>{{$tienda->nombre}}</h2>
 		<img src="../uploads/avatars/{{$tienda->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
 		<h4>Datos Basicos:</h4>

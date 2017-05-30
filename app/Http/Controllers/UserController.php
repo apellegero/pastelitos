@@ -101,7 +101,7 @@ class UserController extends Controller{
 		if(Auth::attempt(['email' => $req['email'],'password' => $req['password']])){
 			return redirect()->route('pagprincipal');
 		}
-		redirect()->back();
+		return redirect()->back();
 	}
 
 	public function logout(){

@@ -22,10 +22,8 @@
     <div coolspan="2">
     <table class="table table-striped">
         <thead>
-
         </thead>
-        <tbody style="bgcolor='#E5FDF8'">
-        <body style='background-color:#E5FDF8'>
+        <body style='background-image:url(../resources/img/297b89bb.png)'>
         @foreach($tiendas as $tienda)
         <div class='row'>
             <div class="col-sm-2">

@@ -1,4 +1,4 @@
-    <div class="container">
+    <div class="container" style="background-color: white;">
        @if(!Auth::check())
     		<div class"row">
     			<div class='col-md-12 col-md-offset-3' style="text-align: center;">

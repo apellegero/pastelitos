@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterwhite')
 
 @section('title')
     Inicio

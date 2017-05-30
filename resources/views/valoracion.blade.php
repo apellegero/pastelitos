@@ -20,6 +20,7 @@ Sing up
 @endif
 @foreach($productos as $producto)
 <div class='row'>
+    <body style='background-color:#E5FDF8'>
     <div class='col-md-6 col-md-offset-3'>
         <div class="input-group">
 

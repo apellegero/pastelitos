@@ -20,6 +20,7 @@
 @endif
     <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
+            <body style='background-color:#E5FDF8'>
             <form action='{{ route('singup') }}' method='post'>
                 <!--General-->
                 <h4>Datos usuario</h4>

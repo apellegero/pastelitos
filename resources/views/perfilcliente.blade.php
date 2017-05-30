@@ -9,6 +9,8 @@
 @if(count($errors) > 0)
     <div class"row">
         <div class='col-md-6 col-md-offset-3'>
+
+            <body style='background-color:#E5FDF8'>
             <div class="alert alert-danger" role="alert">
                 <ul>
                     @foreach($errors->all() as $error)
@@ -20,6 +22,7 @@
     </div>
 @endif
 <div class='row'>
+    <body style='background-color:#E5FDF8'>
     <div class="col-sm-3">
         <img src="../public/uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
     </div>

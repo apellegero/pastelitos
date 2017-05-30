@@ -37,6 +37,7 @@
     <hr class="featurette-divider">
     <div class='row'>
         <div class='col-md-6 col-md-offset-3'>
+            <body style='background-color:#E5FDF8'>
            <form action="{{route('updateproducto')}}" method='post'>
            <input type="hidden" name="id" value="{{$producto->id}}">
                 <div class='form-group'>

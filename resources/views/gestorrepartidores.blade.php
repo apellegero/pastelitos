@@ -21,6 +21,7 @@
 <p>Para editar los datos de un repartidor haz click sobre el nombre del usuario</p>
 <div>
 <table class="table table-striped">
+    <body style='background-color:#E5FDF8'>
  	<thead>
  		<tr> 
 	 		<th>#</th> <th>Usuario</th> <th>Nombre</th> <th>Apellido</th> <th>Mail</th> <th>Telefono</th>

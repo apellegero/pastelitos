@@ -18,7 +18,9 @@
         </div>
     </div>
 @endif
+
     <div class='row'>
+        <body style='background-color:#E5FDF8'>
         <div class='col-md-6 col-md-offset-3'>
             <form action='{{ route('singup') }}' method='post'>
                 <!--General-->

@@ -18,53 +18,52 @@ use DateTime;
 use integer;
 use \Input as Input;
 
-class PedidoController extends Controller{
+class PedidoController extends Controller
+{
 
-	public function carrito(Request $request){
-	    if($request->cantidad>0) {
-            $carritos = array();
-            $precio_total = 0;
-            //Consultar los productos de la tienda
-            //$myTienda = DB::table('tienda')->where('tienda.id', '=',$request['tienda'] )->value('id_user');
-            $productos = DB::table('tienda')->join('producto', 'tienda.id_user', '=', 'producto.id_tienda')->where('producto.id_tienda', '=', $request['tienda'])->distinct()->get();
-            //Crear Pedido
-            $pedido = new Pedido();
-            $pedido->fecha_entrega = new DateTime();
-            $pedido->precio_total = 0;
-            $pedido->id_estado = 0;
-            $pedido->id_direccion = 0;
-            $pedido->pagado = 0;
-            $pedido->id_valoracion_pedido = 0;
-            $pedido->id_tienda = $request['tienda'];
-            $pedido->id_cliente = Auth::user()->id;
-            $pedido->save();
-            //Por cada producto de la tienda lo asociaremos al pedido
-            foreach ($productos as $pro) {
-                //echo $request['prod'.$producto->id];
-                if (isset($request['prod' . $pro->id])) {
-                    $l_producto = new Linea_producto();
-                    $l_producto->id_pedido = $pedido->id;
-                    $l_producto->id_producto = $pro->id;
-                    $l_producto->cantidad = $request['prod' . $pro->id];
-                    $l_producto->save();
-                    //Sacar cantidad del stock
-                    DB::table('producto')->where('producto.id', '=', $pro->id)->update(array('stock' => ($pro->stock) - ($request['prod' . $pro->id])));
-                    //Recalcular precio
-                    $precio_total += ($request['prod' . $pro->id]) * ($pro->precio);
-                }
+    public function carrito(Request $request)
+    {
+
+        $carritos = array();
+        $precio_total = 0;
+        //Consultar los productos de la tienda
+        //$myTienda = DB::table('tienda')->where('tienda.id', '=',$request['tienda'] )->value('id_user');
+        $productos = DB::table('tienda')->join('producto', 'tienda.id_user', '=', 'producto.id_tienda')->where('producto.id_tienda', '=', $request['tienda'])->distinct()->get();
+        //Crear Pedido
+        $pedido = new Pedido();
+        $pedido->fecha_entrega = new DateTime();
+        $pedido->precio_total = 0;
+        $pedido->id_estado = 0;
+        $pedido->id_direccion = 0;
+        $pedido->pagado = 0;
+        $pedido->id_valoracion_pedido = 0;
+        $pedido->id_tienda = $request['tienda'];
+        $pedido->id_cliente = Auth::user()->id;
+        $pedido->save();
+        //Por cada producto de la tienda lo asociaremos al pedido
+        foreach ($productos as $pro) {
+            //echo $request['prod'.$producto->id];
+            if (isset($request['prod' . $pro->id])) {
+                $l_producto = new Linea_producto();
+                $l_producto->id_pedido = $pedido->id;
+                $l_producto->id_producto = $pro->id;
+                $l_producto->cantidad = $request['prod' . $pro->id];
+
+                $l_producto->save();
+                //Sacar cantidad del stock
+                DB::table('producto')->where('producto.id', '=', $pro->id)->update(array('stock' => ($pro->stock) - ($request['prod' . $pro->id])));
+                //Recalcular precio
+                $precio_total += ($request['prod' . $pro->id]) * ($pro->precio);
             }
-            //update en pedido para poner el precio final
-            DB::table('pedido')->where('pedido.id', '=', $pedido->id)->update(array('precio_total' => $precio_total));
-            //consultamos los datos del pedido para mostrarlos
-            $leanprods = DB::table('linea_producto')->where('linea_producto.id_pedido', '=', $pedido->id)->distinct()->get();
-            $pedidocarrito = DB::table('pedido')->where('pedido.id', '=', $pedido->id)->distinct()->get();
-            $direccionUsu = DB::table('direccion')->where('direccion.id_usuario', '=', Auth::user()->id)->distinct()->get();
-            return view('pagpedido', compact('productos', 'leanprods', 'pedidocarrito', 'direccionUsu'));
         }
-        else{
-            return Redirect::back();
-        }
-	}
+        //update en pedido para poner el precio final
+        DB::table('pedido')->where('pedido.id', '=', $pedido->id)->update(array('precio_total' => $precio_total));
+        //consultamos los datos del pedido para mostrarlos
+        $leanprods = DB::table('linea_producto')->where('linea_producto.id_pedido', '=', $pedido->id)->distinct()->get();
+        $pedidocarrito = DB::table('pedido')->where('pedido.id', '=', $pedido->id)->distinct()->get();
+        $direccionUsu = DB::table('direccion')->where('direccion.id_usuario', '=', Auth::user()->id)->distinct()->get();
+        return view('pagpedido', compact('productos', 'leanprods', 'pedidocarrito', 'direccionUsu'));
+    }
 	public function pago(Request $request){
 		//Carga la pagina de pago + guarda datos del pedido
 		$direccion = new Direccion();

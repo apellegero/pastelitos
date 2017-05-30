@@ -27,7 +27,7 @@ class UploadController extends Controller{
 				return view($request['from']);
 			}
 			else{
-				return view('welcome'); // al poner aqui una / peta
+                return Redirect::back(); // al poner aqui una / peta
 			}
 		}
 	}

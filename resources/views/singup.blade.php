@@ -74,7 +74,7 @@
                 </div>
                 <div class='form-group'>
                     <label>Sugerencias</label>
-                    <textarea class="form-control" rows="5" name='sugerencias' id='sugerencias' placeholder="Aquí puede dar alguna instruccion para cuando el repartidor le traiga uno de los pedidos." value='{{ Request::old('sugerencias') }}'></textarea>
+                    <textarea class="form-control" rows="5" name='sugerencias' id='sugerencias' placeholder="Aquí puede dar alguna instruccion para cuando el repartidor le traiga uno de los pedidos." value='{{ Request::old('sugerencias') }}' required></textarea>
                 </div>
                 <button type='submit' class='btn btn-info'>Sing Up</button>
             </form>

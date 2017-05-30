@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
+use Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,17 +20,16 @@ class UserController extends Controller{
 
 	public function singUp(Request $req){
 		//Aquí escollim les diferents validacions del formulari
-		$this->validate($req, [
+        $validator = Validator::make($req->all(), [
 			'email' => 'required|email|unique:users',
 			'nusuario' => 'required|unique:users',
 			'password' => 'required|min:4',
-            'telefono' => 'min:9|integer'
-
+            'telefono' => 'min:9|integer',
+            'numero_calle' => 'integer'
 		]);
-		if($this->fails()){
-
-        }
-        else{
+        if($validator->fails()){
+            return Redirect::back()->withInput()->withErrors($validator);
+        }else {
             //Recollim les dades directament del formulari
             $email = $req['email'];
             $nusuario = $req['nusuario'];
@@ -48,7 +49,7 @@ class UserController extends Controller{
             $user->save();
 
             //direccion
-            if($tipo!=3){
+            if ($tipo != 3) {
                 $direccion = new Direccion();
                 $direccion->id_usuario = $user->id;
                 $direccion->id_pais = 0;
@@ -63,22 +64,22 @@ class UserController extends Controller{
             }
 
             //Com User pot ser Client, Repartidor, o Botiga necessitem crear els altres objectes també
-            if($tipo==1){
+            if ($tipo == 1) {
                 $cliente = new Cliente();
                 $cliente->id_user = $user->id;
                 $cliente->apellido = $req['apellido'];
                 $cliente->fecha_nacimiento = $req['fecha_nacimiento'];
                 $cliente->save();
             }
-            if($tipo==2){
-            //Tienda
+            if ($tipo == 2) {
+                //Tienda
                 $tienda = new Tienda();
                 $tienda->id_user = $user->id;
                 $tienda->nie = $req['nie'];
                 $tienda->save();
             }
-            if($tipo==3){
-            //Repartidor
+            if ($tipo == 3) {
+                //Repartidor
                 $repartidor = new Repartidor();
                 $repartidor->id_user = $user->id;
                 $repartidor->id_tienda = Auth::user()->id;
@@ -88,10 +89,10 @@ class UserController extends Controller{
             }
             Auth::login($user);
             return redirect()->route('pagprincipal');
-		}
+        }
 	}
 
-	public function singIn(Request $req){
+    public function singIn(Request $req){
 
 		$this->validate($req, [
 			'email' => 'required',

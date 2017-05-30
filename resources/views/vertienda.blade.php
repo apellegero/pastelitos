@@ -13,7 +13,7 @@
 		<h4>Datos Basicos:</h4>
 		<ul class="list-unstyled">
   			<li>{{$tienda->nombre}}</li>
-  			<li>Valoración media:{{$tienda->id}}</li>
+  			<!--<li>Valoración media:{{$tienda->id}}</li>-->
   			<li>{{$tienda->calle}}, {{$tienda->numero_calle}}</li>
   			<li>{{$tienda->telefono}}</li>
   			<li>{{$tienda->email}}</li>
@@ -25,7 +25,7 @@
 	</div>
 </div>
 <!-- Producto -->
-<table class="table table-striped">
+<table class="table table-striped" >
     <thead>
         <tr> 
             <th>#</th> 
@@ -60,7 +60,7 @@
 	    </tr>
 	    @endforeach 
 	    @if(Auth::user()->tipo_id==1)
-	    <button type='submit' class="btn btn-info">Pedir</button>
+	    <button type='submit' class="btn btn-info" style="margin-top: 15px;">Pedir</button>
 	    @endif
 	</form>
     </tbody>

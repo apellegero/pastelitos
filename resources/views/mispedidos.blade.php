@@ -139,7 +139,7 @@
 
 				@endforeach
 
-                    <a class="btn" href="valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
+                <!--<a class="btn" href="valoracionpag/{{$pedido->id_tienda}}" role="button">acceder a valoracion</a>-->
 		        </div>
 		 </div>
 		 </td>

@@ -261,7 +261,7 @@ Route::group(['middleware'=>['web']], function(){
         'as' => 'valoracionenviar'
     ]);
     Route::post('/valoracion', [
-        'uses' => 'UserController@valoracion',
+        'uses' => 'ValoracionController@valoracion',
         'as' => 'valoracion'
     ]);
 });

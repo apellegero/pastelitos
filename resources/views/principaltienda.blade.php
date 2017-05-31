@@ -6,6 +6,7 @@
 
 @section('content')
 <h2>Filtrar los pedidos por el estado:</h2>
+<body style='background-image:url(../resources/img/297b89bb.png)'>
 <div class="row">
 	<div style="margin-left: 10px;">
 		<ul class="nav nav-pills" role="tablist" style="display: inline;">

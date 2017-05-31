@@ -35,7 +35,6 @@ class TiendaController extends Controller{
 	public function vertienda($id){
         $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->where('direccion.id_usuario', '=', $id)->distinct()->get();
        $valoraciones = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->where('tienda.id', '=', $id)->distinct()->get();
-       echo $tiendas;
        $productos = DB::table('users')->join('producto', 'users.id', '=', 'producto.id_tienda')->where('producto.id_tienda', '=', $id)->distinct()->get();
         return view('vertienda', compact(['tiendas', 'productos', 'valoraciones']));
 

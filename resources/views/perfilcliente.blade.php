@@ -27,17 +27,16 @@
         <img src="../public/uploads/avatars/{{Auth::user()->foto}}" style="width: 150px; height: 150px;float: left; margin-right: 25px;">
     </div>
     <div class="col-sm-3">
-        <h2 class="featurette-heading">{{Auth::user()->nombre}}</h2>
-        <small style="margin-left: 5px;">{{Auth::user()->nusuario}}</small>
+        <h2>{{Auth::user()->nombre}}</h2>
+        <p>{{Auth::user()->nusuario}}</p>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-3" style="margin-top: 25px;">
         <input type='hidden' name='_token' value='{{ Session::token() }}'>
-
-        <h4 style="margin-top: 10px; margin-left: 5px;">Telefono: {{Auth::user()->telefono}}</h4>
-        <h4 style="margin-top: 10px; margin-left: 5px;">Email: {{Auth::user()->email}}</h4>
+         <p><strong>Telefono: </strong>{{Auth::user()->telefono}}</p>
+         <p><strong>Email: </strong>{{Auth::user()->email}}</p>
 
     </div>
-    <div class="col-sm3">
+    <div class="col-sm3" style="margin-top: 25px;">
 
         <a class="btn" href="{{ route('editperfilcliente')}}" role="button">Editar perfil</a>
 

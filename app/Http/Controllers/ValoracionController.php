@@ -19,8 +19,8 @@ use Image;
 class ValoracionController extends Controller{
 
     public function valoracionpag($id){
-        $productos = DB::table('tienda')->where('tienda.id_user', '=', $id)->distinct()->get();
-        return view('valoracion', compact('productos'));
+        $pedidos = DB::table('pedido')->where('pedido.id', '=', $id)->distinct()->get();
+        return view('valoracion', compact('pedidos'));
     }
     
     public function valoracionnota(Request $req){
@@ -29,12 +29,13 @@ class ValoracionController extends Controller{
         		]);
     	$nota = $req['nota'];
         $motiu = $req['motiu'];
-        $id = $req['id'];
+        $id_pedidos = $req['id_pedido'];
+        $id_tiendas = DB::table('pedido')->where('id', '=', $id_pedidos)->value('pedido.id_tienda');
         $valoracion = new Valoracion_pedido();
         $valoracion->nota = $nota;
         $valoracion->motivos = $motiu;
-        $valoracion->id_pedido = 99999;
-        $valoracion->id_tienda = $id;
+        $valoracion->id_pedido = $id_pedidos;
+        $valoracion->id_tienda = $id_tiendas;
         $valoracion->save();
         $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
         return view('principalcliente', compact('tiendas'));
@@ -57,6 +58,11 @@ class ValoracionController extends Controller{
         $valoracion->save();
         $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();
         return view('principalcliente', compact('tiendas'));
+    }
+
+    public function valoracionestienda($id){
+        $valoraciones = DB::table('valoracion_pedido')->join('pedido', 'valoracion_pedido.id_pedido', '=', 'pedido.id')->join('users', 'pedido.id_cliente', '=', 'users.id')->join('cliente', 'users.id', '=', 'cliente.id_user')->where('valoracion_pedido.id_tienda', '=', $id)->distinct()->get();
+        return view('valoracionestienda', compact('valoraciones'));
     }
 
 

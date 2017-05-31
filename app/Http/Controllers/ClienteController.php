@@ -60,6 +60,7 @@ class ClienteController extends Controller{
             $productos = DB::table('producto')->distinct()->get();
             $tiendas = DB::table('users')->distinct()->get();
             $estados = DB::table('estado')->distinct()->get();
-            return view('mispedidos', compact(['pedidos','lineas', 'productos', 'estados', 'direcciones', 'tiendas']));
+            $valoracion_pedidos = DB::table('valoracion_pedido')->distinct()->get();
+            return view('mispedidos', compact(['pedidos','lineas', 'productos', 'estados', 'direcciones', 'tiendas' , 'valoracion_pedidos']));
         }
 }

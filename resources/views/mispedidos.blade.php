@@ -136,10 +136,13 @@
 							<!-- Si estado es 5 valoracion -->
 						@endif
 					@endif
-
 				@endforeach
-
-                <!--<a class="btn" href="valoracionpag/{{$pedido->id_tienda}}" role="button">acceder a valoracion</a>-->
+				@foreach($tiendas as $tienda)
+					@if($tienda->id == $pedido->id_tienda)
+						<!--<p style="margin-top: 10px;">Aun no ha valorado el pedido.</p>-->
+						<a class="btn" href="valoracionpag/{{$pedido->id}}" role="button">Valorar</a>
+                	@endif
+				 @endforeach
 		        </div>
 		 </div>
 		 </td>

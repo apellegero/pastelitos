@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 
 @section('title')
     Tienda
@@ -21,12 +21,11 @@
             <li>{{$tienda->id_user}}</li>
 		</ul>
 		<p>{{$tienda->sugerencias}}</p>
-        <h4>Acceder a valoracion</h4>
-        <a class="btn" href="../valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
-
 	</div>
 	<div class="col-md-6">
-
+		<h2>Valoraciones</h2>
+		<p>Consulte la opinion de los clientes que ya han realizado un pedido con esta tienda.</p>
+		<a class="btn" href="../valoracionestienda/{{$tienda->id_user}}" role="button">Valoraciones Clientes</a>
 	</div>
 </div>
 <!-- Producto -->

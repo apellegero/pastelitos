@@ -265,4 +265,8 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'ValoracionController@valoracion',
         'as' => 'valoracion'
     ]);
+    Route::get('/valoracionestienda/{id}', [
+        'uses' => 'ValoracionController@valoracionestienda',
+        'as' => 'valoracionestienda'
+    ]);
 });

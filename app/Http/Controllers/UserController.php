@@ -170,4 +170,8 @@ class UserController extends Controller{
 
         return view('index');
     }
+    public function valoracionpag($id){
+        $productos = DB::table('tienda')->where('tienda.id_user', '=', $id)->distinct()->get();
+        return view('valoracion', compact('productos'));
+    }
 }

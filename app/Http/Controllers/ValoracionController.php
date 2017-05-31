@@ -25,7 +25,7 @@ class ValoracionController extends Controller{
     
     public function valoracionnota(Request $req){
         $this->validate($req, [
-        			'nota' => 'required|integer|max:2'
+        			'nota' => 'required|integer|max:10'
         		]);
     	$nota = $req['nota'];
         $motiu = $req['motiu'];
@@ -33,7 +33,7 @@ class ValoracionController extends Controller{
         $valoracion = new Valoracion_pedido();
         $valoracion->nota = $nota;
         $valoracion->motivos = $motiu;
-        $valoracion->id_pedido = 9999999999;
+        $valoracion->id_pedido = 99999;
         $valoracion->id_tienda = $id;
         $valoracion->save();
         $tiendas = DB::table('users')->join('tienda', 'tienda.id_user', '=', 'users.id')->join('direccion', 'direccion.id_usuario', '=', 'tienda.id_user')->distinct()->get();

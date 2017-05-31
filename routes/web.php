@@ -224,8 +224,9 @@ Route::group(['middleware'=>['web']], function(){
         'uses' => 'ValoracionController@valoracionpag',
         'as' => 'valoracionpag'
     ]);
+
     Route::post('/valoracionnota', [
-        'uses' => 'ValoracionController@valoracionnota',
+          'uses' => 'ValoracionController@valoracionnota',
         'as' => 'valoracionnota'
     ]);
     Route::get('/valoracionpagpedido/{id}', [
@@ -233,7 +234,7 @@ Route::group(['middleware'=>['web']], function(){
         'as' => 'valoracionpagpedido'
     ]);
     Route::post('/valoracionnotapedido', [
-        'uses' => 'ValoracionController@valoracionnotapedido',
+        'uses' => 'UserController@valoracionnotapedido',
         'as' => 'valoracionnotapedido'
     ]);
     Route::post('/updaterepartidor', [

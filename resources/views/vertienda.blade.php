@@ -18,8 +18,12 @@
   			<li>{{$tienda->calle}}, {{$tienda->numero_calle}}</li>
   			<li>{{$tienda->telefono}}</li>
   			<li>{{$tienda->email}}</li>
+            <li>{{$tienda->id_user}}</li>
 		</ul>
 		<p>{{$tienda->sugerencias}}</p>
+        <h4>Acceder a valoracion</h4>
+        <a class="btn" href="../valoracionpag/{{$tienda->id_user}}" role="button">acceder a valoracion</a>
+
 	</div>
 	<div class="col-md-6">
 
